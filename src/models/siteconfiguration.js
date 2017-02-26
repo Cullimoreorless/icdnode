@@ -10,6 +10,6 @@ var siteConfigFunction = function(db){
   });
 
   return SiteConfiguration;
-}
+};
 
 module.exports = siteConfigFunction;

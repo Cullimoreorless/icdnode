@@ -8,7 +8,7 @@ module.exports = function(db, Project){
     title: Sequelize.STRING(60),
     type: Sequelize.ENUM('Banner','Tile'),
     order: Sequelize.INTEGER
-  })
+  });
   Photo.belongsTo(Project, {as: 'project'});
   return Photo;
-}
+};
