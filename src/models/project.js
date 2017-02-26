@@ -2,6 +2,7 @@ var Sequelize = require('sequelize');
 
 var projectFunction = function(db){
   var Project = db.define('project',{
+    projectid: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
     name:{ type: Sequelize.STRING(50) },
     url: { type: Sequelize.STRING(60), unique:true },
     description: { type: Sequelize.STRING(1000) },

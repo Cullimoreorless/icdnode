@@ -4,7 +4,8 @@ var models = function(db){
   return {
     User: User,
     Project: Project,
-    SiteConfiguration: require('./siteconfiguration')(db)
+    SiteConfiguration: require('./siteconfiguration')(db),
+    Photo: require('./photo')(db, Project)
   };
 };
 
