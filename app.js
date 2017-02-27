@@ -4,6 +4,7 @@ var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var session = require('express-session');
 var Sequelize = require('sequelize');
+//var partials = require('express-partials');
 
 var db = new Sequelize('icd_design_db', 'icdadmin','icd17Design!', {
   host: 'localhost',
@@ -21,15 +22,25 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(session({secret:'icdnode'}));
+//app.use(partials());
 
 var models = require('./src/models/models')(db);
 
 var userService = require('./src/services/userService')(models);
 require('./src/authentication/passport')(app, userService);
 
+var siteConfigService = require('./src/services/siteConfigService')(models);
+
 db.sync({force:true}).then(function(){
   console.log('db synced');
   console.log(models);
+  models.SiteConfiguration.create({
+    logourl:'photo.jpg',
+    logoalttext:'site logo',
+    introtext:'welcome to this site',
+    sitetitle:'Site Title',
+    contactemail:'me@thisdomain.com'
+  })
   userService.createUser({username:'icdadmin',password:'admin'}, function(error, response){
     if(error){
       console.error(error);
@@ -49,9 +60,16 @@ console.log(adminRouter);
 app.use('/admin', adminRouter);
 
 app.get('/', function(req, res){
-  res.render('index',{
-    content:'content'
+  siteConfigService.getSiteConfig(function(err, conf){
+    console.log(conf);
+    res.render('index',{
+      conf: conf
+    });
   });
+});
+
+app.get('/login', function(req, res){
+  res.render('login');
 });
 
 
