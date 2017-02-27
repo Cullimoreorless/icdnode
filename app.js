@@ -44,6 +44,10 @@ db.sync({force:true}).then(function(){
 app.set('views','./src/views');
 app.set('view engine', 'ejs');
 
+var adminRouter = require('./src/routes/adminRoutes')();
+console.log(adminRouter);
+app.use('/admin', adminRouter);
+
 app.get('/', function(req, res){
   res.render('index',{
     content:'content'
