@@ -2,31 +2,20 @@ var express = require('express');
 var adminRouter = express.Router();
 var passport = require('passport');
 
-var router = function(){
+var router = function(adminController){
   adminRouter.use(function(req, res, next){
-    // if(!req.user){
-    //   res.redirect('/login');
-    // }
+    if(!req.user){
+      res.redirect('/login');
+    }
     next();
   });
-
-  adminRouter.route('/signIn')
-    .post(passport.authenticate('local', {
-      failureRedirect:'/login'
-    }), function(req, res){
-      res.redirect('/admin/portal');
-    });
   
   adminRouter.route('/portal')
-    .all(function(req, res, next){
-      if(!req.user){
-        res.redirect('/login');
-      }
-      next();
-    })
-    .get(function(req, res){
-      res.send('You are logged in');
-    });
+    .get(adminController.getSiteConfigPage);
+
+  adminRouter.route('/siteconfig')
+    .post(adminController.saveSiteConfig);
+
 
   return adminRouter;
 }

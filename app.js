@@ -55,7 +55,8 @@ db.sync({force:true}).then(function(){
 app.set('views','./src/views');
 app.set('view engine', 'ejs');
 
-var adminRouter = require('./src/routes/adminRoutes')();
+var adminController = require('./src/controllers/adminController')(siteConfigService);
+var adminRouter = require('./src/routes/adminRoutes')(adminController);
 console.log(adminRouter);
 app.use('/admin', adminRouter);
 
@@ -72,6 +73,12 @@ app.get('/login', function(req, res){
   res.render('login');
 });
 
+app.route('/signIn')
+    .post(passport.authenticate('local', {
+      failureRedirect:'/login'
+    }), function(req, res){
+      res.redirect('/admin/portal');
+    });
 
 app.listen(port, function(err){
   console.log('running on port' + port);
