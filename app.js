@@ -4,7 +4,25 @@ var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var session = require('express-session');
 var Sequelize = require('sequelize');
-//var partials = require('express-partials');
+var multer = require('multer');
+
+
+var photoDirectory = __dirname + '/public/photos/';
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, photoDirectory);
+  },
+  filename: function (req, file, cb) {
+    console.log(file);
+    var firstPart = file.originalname.substring(0, file.originalname.lastIndexOf('.'));
+    var extension = file.originalname.substring(file.originalname.lastIndexOf('.'), file.originalname.length);
+    var parsedFileName = firstPart.replace(' ','-').replace(/[^A-Za-z0-9-]/g, '');
+    req.body.filename = parsedFileName + extension;
+    cb(null, parsedFileName + extension);
+  }
+});
+var photoUpload = multer({storage: storage});
+
 
 var db = new Sequelize('icd_design_db', 'icdadmin','icd17Design!', {
   host: 'localhost',
@@ -22,7 +40,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(session({secret:'icdnode'}));
-//app.use(partials());
 
 var models = require('./src/models/models')(db);
 
@@ -33,19 +50,18 @@ var siteConfigService = require('./src/services/siteConfigService')(models);
 
 db.sync({force:true}).then(function(){
   console.log('db synced');
-  console.log(models);
+  //console.log(models);
   models.SiteConfiguration.create({
     logourl:'photo.jpg',
     logoalttext:'site logo',
     introtext:'welcome to this site',
     sitetitle:'Site Title',
     contactemail:'me@thisdomain.com'
-  })
+  });
   userService.createUser({username:'icdadmin',password:'admin'}, function(error, response){
     if(error){
       console.error(error);
     }
-    console.log(response);
   });
 
 }).error(function(err){
@@ -56,8 +72,8 @@ app.set('views','./src/views');
 app.set('view engine', 'ejs');
 
 var adminController = require('./src/controllers/adminController')(siteConfigService);
-var adminRouter = require('./src/routes/adminRoutes')(adminController);
-console.log(adminRouter);
+var adminRouter = require('./src/routes/adminRoutes')(adminController, photoUpload);
+
 app.use('/admin', adminRouter);
 
 app.get('/', function(req, res){

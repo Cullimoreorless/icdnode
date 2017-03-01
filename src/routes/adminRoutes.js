@@ -2,7 +2,7 @@ var express = require('express');
 var adminRouter = express.Router();
 var passport = require('passport');
 
-var router = function(adminController){
+var router = function(adminController, photoUpload){
   adminRouter.use(function(req, res, next){
     if(!req.user){
       res.redirect('/login');
@@ -13,11 +13,12 @@ var router = function(adminController){
   adminRouter.route('/portal')
     .get(adminController.getSiteConfigPage);
 
-  adminRouter.route('/siteconfig')
-    .post(adminController.saveSiteConfig);
+  adminRouter.post('/siteconfig', 
+    photoUpload.single('logophoto'),
+    adminController.saveSiteConfig);
 
 
   return adminRouter;
-}
+};
 
 module.exports = router;
