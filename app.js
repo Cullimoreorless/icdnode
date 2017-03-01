@@ -16,7 +16,7 @@ var storage = multer.diskStorage({
     console.log(file);
     var firstPart = file.originalname.substring(0, file.originalname.lastIndexOf('.'));
     var extension = file.originalname.substring(file.originalname.lastIndexOf('.'), file.originalname.length);
-    var parsedFileName = firstPart.replace(' ','-').replace(/[^A-Za-z0-9-]/g, '');
+    var parsedFileName = firstPart.replace(/( )/g,'-').replace(/[^A-Za-z0-9-]/g, '');
     req.body.filename = parsedFileName + extension;
     cb(null, parsedFileName + extension);
   }

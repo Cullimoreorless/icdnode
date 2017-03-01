@@ -9,8 +9,17 @@ var siteConfigService = function(models){
     });
   };
 
+  var saveSiteConfig = function(siteConfigData, callback){
+    models.SiteConfiguration.update(siteConfigData, { where: {siteconfigurationid:1}}).then(function(response){
+      callback(null, response);
+    }).error(function(error){
+      callback(error, false);
+    });
+  };
+
   return {
-    getSiteConfig: getSiteConfig
+    getSiteConfig: getSiteConfig,
+    saveSiteConfig: saveSiteConfig
   };
 };
 
