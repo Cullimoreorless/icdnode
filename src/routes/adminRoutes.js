@@ -17,6 +17,8 @@ var router = function(adminController, photoUpload){
     photoUpload.single('logophoto'),
     adminController.saveSiteConfig);
 
+  adminRouter.route('/projects')
+    .get(adminController.getProjectList);
 
   return adminRouter;
 };

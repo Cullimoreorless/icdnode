@@ -38,7 +38,7 @@
             </div>
             <div class='form-group'>
               <label>Site Intro Text  </label>
-              <textarea class="form-control" name="introtext" value="<%= conf.introtext %>" ></textarea>
+              <textarea class="form-control" name="introtext" ><%= conf.introtext %></textarea>
             </div>
             <div class='form-group'>
               <label>Logo</label>
@@ -47,6 +47,10 @@
             <div class='form-group'>
               <label>Logo Alt Text</label>
               <input class='form-control' type='text' placeholder='Logo Alt Text' value='<%= conf.logoalttext %>' name='logoalttext'>
+            </div>
+            <div class='form-group'>
+              <label>Contact Email</label>
+              <input class='form-control' type='Email' placeholder='Email' value='<%= conf.contactemail %>' name='contactemail'>
             </div>
             <input class="btn btn-primary" type="submit" value="Save">
           </form>

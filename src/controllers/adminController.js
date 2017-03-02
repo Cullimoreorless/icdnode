@@ -2,10 +2,7 @@
 var adminController = function(siteConfigService){
   var getSiteConfigPage = function(req, res){
     siteConfigService.getSiteConfig(function(err, conf){
-      console.log(conf);
-      res.render('admin/siteconfig',{
-        conf: conf
-      });
+      res.render('admin/siteconfig');
     });
   };
 
@@ -17,18 +14,24 @@ var adminController = function(siteConfigService){
         logourl: req.body.filename,
         logoalttext: req.body.logoalttext,
         sitetitle: req.body.sitetitle,
-        introtext: req.body.introtext
+        introtext: req.body.introtext,
+        contactemail: req.body.contactemail
       },
       function(err, response){
-        res.render('admin/siteconfig',{
-          conf: response
-        });
+        console.log(response);
+        res.redirect('/admin/portal');
       }
     );
   };
+
+  var getProjectList = function(req, res){
+    res.send('project list');
+  };
+
   return {
     getSiteConfigPage: getSiteConfigPage,
-    saveSiteConfig: saveSiteConfig
+    saveSiteConfig: saveSiteConfig,
+    getProjectList: getProjectList
   };
 };
 

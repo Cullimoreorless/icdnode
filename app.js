@@ -48,6 +48,18 @@ require('./src/authentication/passport')(app, userService);
 
 var siteConfigService = require('./src/services/siteConfigService')(models);
 
+app.use(function(req, res, next){
+  siteConfigService.getSiteConfig(function(error, response){
+    console.log(response);
+    if(response){
+      res.locals = {
+        conf: response
+      };
+    }
+    next();
+  });
+});
+
 db.sync({force:true}).then(function(){
   console.log('db synced');
   //console.log(models);
@@ -77,12 +89,10 @@ var adminRouter = require('./src/routes/adminRoutes')(adminController, photoUplo
 app.use('/admin', adminRouter);
 
 app.get('/', function(req, res){
-  siteConfigService.getSiteConfig(function(err, conf){
-    console.log(conf);
-    res.render('index',{
-      conf: conf
-    });
-  });
+  // siteConfigService.getSiteConfig(function(err, conf){
+  //   console.log(conf);
+    res.render('index');
+  // });
 });
 
 app.get('/login', function(req, res){
