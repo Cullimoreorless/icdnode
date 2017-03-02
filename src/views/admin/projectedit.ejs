@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Edit Project</title>
+    <!--bower:css-->
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
+    <!--endbower-->
+    <!--bower:js-->
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <!--endbower-->
+    <!--inject:css-->
+    <!--endinject-->
+    <!--inject:js-->
+    <!--endinject-->
+    <!--[if lf IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header role="banner">
+      <% include ../common/header %>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <% include ../common/adminnav %>
+        </div>
+        <div class="col-sm-5">
+          <form action="/admin/saveproject" method="post">
+            <div class='form-group'>
+              <label>Project Name</label>
+              <input class='form-control' type='text' value='<%= project.name %>' name='name'>
+            </div>
+            <div class='form-group'>
+              <label>Description</label>
+              <textarea name="description" class="form-control"><%= project.description %></textarea>
+            </div>
+            <div class='form-group'>
+              <label>Teaser (short description)</label>
+              <input class='form-control' type='text' value='<%= project.teaser %>' name='teaser'>
+            </div>
+            <div class="form-group">
+              <label>
+                <input type="checkbox" name="featured" checked='<%=project.featured %>' /> Featured (will show up on front page)
+              </label>
+            </div>
+            <input type="submit" class="btn btn-primary" value="Save Project" />
+          </form>
+        </div>
+        <div class="col-sm-4">
+          Photos go here
+        </div>
+      </div>
+    </div>
+    <footer>
+      <% include ../common/footer %>
+    </footer>
+  </body>
+</html>

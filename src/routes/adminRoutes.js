@@ -20,6 +20,15 @@ var router = function(adminController, photoUpload){
   adminRouter.route('/projects')
     .get(adminController.getProjectList);
 
+  adminRouter.route('/new-project')
+    .get(adminController.getNewProjectPage);
+
+  adminRouter.route('/project/:projecturl')
+    .get(adminController.editProjectPage);
+
+  adminRouter.route('/saveproject')
+    .post(adminController.saveProject);
+
   return adminRouter;
 };
 

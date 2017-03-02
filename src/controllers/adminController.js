@@ -1,5 +1,5 @@
 
-var adminController = function(siteConfigService){
+var adminController = function(siteConfigService, projectService){
   var getSiteConfigPage = function(req, res){
     siteConfigService.getSiteConfig(function(err, conf){
       res.render('admin/siteconfig');
@@ -25,13 +25,51 @@ var adminController = function(siteConfigService){
   };
 
   var getProjectList = function(req, res){
-    res.send('project list');
+    projectService.getProjectsList(function(err, projects){
+      res.render('admin/projectlist', {projects: projects});
+    });
+  };
+
+  var getNewProjectPage = function(req, res){
+    res.render('admin/projectedit', {
+      project: {
+        projectid:0,
+        url:'',
+        name:'',
+        description:'',
+        teaser:'',
+        featured: false
+      }
+    });
+  };
+
+  var editProjectPage = function(req, res){
+    projectService.getProjectToEdit(req.params.projecturl, function(error, project){
+      if(error){
+        res.send('Could not find project');
+      }
+      res.render('admin/projectedit', {
+        project: project
+      });
+    });
+  };
+
+  var saveProject = function(req, res){
+    projectService.saveProject(req.body, function(error, projecturl){
+      if(error){
+        res.send('Could not save project');
+      }
+      res.redirect('/admin/project/'+projecturl);
+    })
   };
 
   return {
+    getNewProjectPage: getNewProjectPage,
+    editProjectPage: editProjectPage,
     getSiteConfigPage: getSiteConfigPage,
     saveSiteConfig: saveSiteConfig,
-    getProjectList: getProjectList
+    getProjectList: getProjectList,
+    saveProject:saveProject
   };
 };
 

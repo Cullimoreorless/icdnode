@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Ian Cullimore Design</title>
+    <!--bower:css-->
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
+    <!--endbower-->
+    <!--bower:js-->
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <!--endbower-->
+    <!--inject:css-->
+    <!--endinject-->
+    <!--inject:js-->
+    <!--endinject-->
+    <!--[if lf IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header role="banner">
+      <% include ../common/header %>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <% include ../common/adminnav %>
+        </div>
+        <div class="col-sm-9">
+          <table class="table table-striped table-hover">
+            <thead>
+              <tr>
+                <th>Project Name</th>
+                <th>Teaser</th>
+                <th>Featured</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% if(locals.projects){ %>
+                <% projects.forEach(function(project){%>
+                  <tr onclick="window.location='/admin/project/<%= project.url %>';">
+                    <td><%= project.name %></td>
+                    <td><%= project.teaser %></td>
+                    <td><%= project.featured %></td>
+                  </tr>
+                <%})%>
+              <%}%>
+            </tbody>
+          </table>
+          <a href="/admin/new-project" class="btn btn-primary"> + New Project</a>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <% include ../common/footer %>
+    </footer>
+  </body>
+</html>

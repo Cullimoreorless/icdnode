@@ -47,6 +47,7 @@ var userService = require('./src/services/userService')(models);
 require('./src/authentication/passport')(app, userService);
 
 var siteConfigService = require('./src/services/siteConfigService')(models);
+var projectService = require('./src/services/projectService')(models);
 
 app.use(function(req, res, next){
   siteConfigService.getSiteConfig(function(error, response){
@@ -83,7 +84,7 @@ db.sync({force:true}).then(function(){
 app.set('views','./src/views');
 app.set('view engine', 'ejs');
 
-var adminController = require('./src/controllers/adminController')(siteConfigService);
+var adminController = require('./src/controllers/adminController')(siteConfigService, projectService);
 var adminRouter = require('./src/routes/adminRoutes')(adminController, photoUpload);
 
 app.use('/admin', adminRouter);
