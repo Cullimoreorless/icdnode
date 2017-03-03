@@ -29,6 +29,13 @@ var router = function(adminController, photoUpload){
   adminRouter.route('/saveproject')
     .post(adminController.saveProject);
 
+  adminRouter.route('/getphotoform')
+    .get(function(req, res){
+      res.render('admin/photoform', { url: '', caption: '', title: '', description:''}, function(err, response){
+        
+      });
+    });
+
   return adminRouter;
 };
 

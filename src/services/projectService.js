@@ -8,7 +8,10 @@ var projectService = function(models){
   };
 
   var getProjectToEdit = function(projecturl, callback){
-    models.Project.findAll({where: {url: projecturl}}).then(function(projects){
+    models.Project.findAll({where: {url: projecturl}, 
+                            include: { model: models.Photo, orderBy: 'order' }})
+    .then(function(projects){
+      console.log(projects);
       callback(null, projects[0]);
     }).error(function(error){
       callback(error, false);

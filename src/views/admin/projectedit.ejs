@@ -30,7 +30,7 @@
         <div class="col-sm-3">
           <% include ../common/adminnav %>
         </div>
-        <div class="col-sm-5">
+        <div class="col-sm-4">
           <form action="/admin/saveproject" method="post">
             <div class='form-group'>
               <label>Project Name</label>
@@ -52,13 +52,29 @@
             <input type="submit" class="btn btn-primary" value="Save Project" />
           </form>
         </div>
-        <div class="col-sm-4">
-          Photos go here
+        <div class="col-sm-5">
+          <div id="photo-list">
+            <% if(project.photos && project.photos.length){ %> 
+              <% for(var i = 0; i < project.photos.length; i++){ %> 
+                <% var photo = project.photos[i]; %>
+                <% include ./photoform %>
+              <% } %>
+            <% } %>
+          </div>
+          <button id="newPhotoBtn" class="btn btn-primary">New Photo</button>
         </div>
       </div>
     </div>
     <footer>
       <% include ../common/footer %>
     </footer>
+    <script type='text/javascript'> 
+      var addPhoto = function(){
+        $.get('/admin/getphotoform', null, function(response){
+          $('#photo-list').append(response);
+        });
+      };
+      $('#newPhotoBtn').click(addPhoto);
+    <script>
   </body>
 </html>

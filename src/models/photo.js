@@ -1,6 +1,7 @@
 var Sequelize = require('sequelize');
 
-module.exports = function(db, Project){
+
+module.exports = function(db){
   var Photo = db.define('photo', {
     photoid: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
     url: Sequelize.STRING,
@@ -9,6 +10,5 @@ module.exports = function(db, Project){
     type: Sequelize.ENUM('Banner','Tile'),
     order: Sequelize.INTEGER
   });
-  Photo.belongsTo(Project, {as: 'project'});
   return Photo;
 };
