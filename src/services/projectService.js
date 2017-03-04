@@ -15,15 +15,16 @@ var projectService = function(models){
       callback(null, projects[0]);
     }).error(function(error){
       callback(error, false);
-    })
+    });
   };
 
   var encodeProjectName = function(projectName){
     return projectName.toLowerCase().replace(/( )/g,'-').replace(/[^A-Za-z0-9-]/g, '');
-  }
+  };
 
   var saveProject = function(project, callback){
     var encodedProjectName = encodeProjectName(project.name);
+    project.featured = project.featured ? true : false;
     project.url = encodedProjectName;
     if(project.projectid){
       models.Project.update(project, {where:{projectid: project.projectid}})

@@ -1,6 +1,7 @@
 var express = require('express');
 var adminRouter = express.Router();
 var passport = require('passport');
+var ejs = require('ejs');
 
 var router = function(adminController, photoUpload){
   adminRouter.use(function(req, res, next){
@@ -31,9 +32,13 @@ var router = function(adminController, photoUpload){
 
   adminRouter.route('/getphotoform')
     .get(function(req, res){
-      res.render('admin/photoform', { url: '', caption: '', title: '', description:''}, function(err, response){
-        
-      });
+      ejs.renderFile(__dirname + '/../views/admin/photoform.ejs', 
+        {photo:{ url: '', caption: '', title: '', description:''}}, 
+        function(err, result){
+          if(result){
+            res.send(result);
+          }
+        });
     });
 
   return adminRouter;

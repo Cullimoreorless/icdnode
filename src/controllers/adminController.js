@@ -60,7 +60,7 @@ var adminController = function(siteConfigService, projectService){
         res.send('Could not save project');
       }
       res.redirect('/admin/project/'+projecturl);
-    })
+    });
   };
 
   return {

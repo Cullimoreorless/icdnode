@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Edit Project</title>
     <!--bower:css-->
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="..//lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="..//lib/font-awesome/css/font-awesome.min.css" />
     <!--endbower-->
     <!--bower:js-->
-    <script src="/lib/jquery/dist/jquery.js"></script>
-    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="..//lib/jquery/dist/jquery.js"></script>
+    <script src="..//lib/bootstrap/dist/js/bootstrap.js"></script>
     <!--endbower-->
     <!--inject:css-->
+    <link rel="stylesheet" href="/css/style.css">
     <!--endinject-->
     <!--inject:js-->
     <!--endinject-->
@@ -30,51 +31,91 @@
         <div class="col-sm-3">
           <% include ../common/adminnav %>
         </div>
-        <div class="col-sm-4">
-          <form action="/admin/saveproject" method="post">
-            <div class='form-group'>
-              <label>Project Name</label>
-              <input class='form-control' type='text' value='<%= project.name %>' name='name'>
+        <div class="col-sm-9">
+          <div class="row">
+            <div class="col-sm-12" style="text-align:right;">
+              <button class="btn btn-primary" id="projectInfoBtn">Project Info</button>
+              <button class="btn" id="projectPhotosBtn">Photos</button>
             </div>
-            <div class='form-group'>
-              <label>Description</label>
-              <textarea name="description" class="form-control"><%= project.description %></textarea>
-            </div>
-            <div class='form-group'>
-              <label>Teaser (short description)</label>
-              <input class='form-control' type='text' value='<%= project.teaser %>' name='teaser'>
-            </div>
-            <div class="form-group">
-              <label>
-                <input type="checkbox" name="featured" checked='<%=project.featured %>' /> Featured (will show up on front page)
-              </label>
-            </div>
-            <input type="submit" class="btn btn-primary" value="Save Project" />
-          </form>
-        </div>
-        <div class="col-sm-5">
-          <div id="photo-list">
-            <% if(project.photos && project.photos.length){ %> 
-              <% for(var i = 0; i < project.photos.length; i++){ %> 
-                <% var photo = project.photos[i]; %>
-                <% include ./photoform %>
-              <% } %>
-            <% } %>
           </div>
-          <button id="newPhotoBtn" class="btn btn-primary">New Photo</button>
+          <div class="row" id="projectInfo">
+            <div class="col-sm-8">
+              <form action="/admin/saveproject" method="post">
+                <div class='form-group'>
+                  <label>Project Name</label>
+                  <input class='form-control' type='text' value='<%= project.name %>' name='name'>
+                </div>
+                <div class='form-group'>
+                  <label>Description</label>
+                  <textarea name="description" class="form-control"><%= project.description %></textarea>
+                </div>
+                <div class='form-group'>
+                  <label>Teaser (short description)</label>
+                  <input class='form-control' type='text' value='<%= project.teaser %>' name='teaser'>
+                </div>
+                <div class="form-group">
+                  <label>
+                    <input type="checkbox" name="featured" checked='<%=project.featured %>' /> Featured (will show up on front page)
+                  </label>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Save Project" />
+              </form>
+            </div>
+          </div>
+          <div class="row" id="projectPhotos">
+            <div class="col-sm-6">
+              <div id="photo-list">
+                <% if(project.photos && project.photos.length){ %> 
+                  <% for(var i = 0; i < project.photos.length; i++){ %> 
+                    <% var photo = project.photos[i]; %>
+                    <% include ./photoform %>
+                  <% } %>
+                <% } %>
+              </div>
+              <button id="newPhotoBtn" class="btn btn-primary">New Photo</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <footer>
       <% include ../common/footer %>
     </footer>
-    <script type='text/javascript'> 
+    <script type='text/javascript'>
+      var checkOrAddClass = function(elem, className){
+        if(!elem.hasClass(className)){
+          elem.addClass(className);
+        }
+      }
+
+      var projectInfoDiv = $('#projectInfo'); 
+      var projectPhotosDiv = $('#projectPhotos');
+      var projectInfoBtn = $('#projectInfoBtn');
+      var projectPhotosBtn = $('#projectPhotosBtn');
+      projectPhotosDiv.hide();
+
+      var showProjectInfo = function(){
+        projectInfoDiv.show();
+        projectPhotosDiv.hide();
+        checkOrAddClass(projectInfoBtn, 'btn-primary');
+        projectPhotosBtn.removeClass('btn-primary');
+      };
+      var showProjectPhotos = function(){
+        projectInfoDiv.hide();
+        projectPhotosDiv.show();
+        checkOrAddClass(projectPhotosBtn, 'btn-primary');
+        projectInfoBtn.removeClass('btn-primary');
+      };
+
+      projectInfoBtn.click(showProjectInfo);
+      projectPhotosBtn.click(showProjectPhotos);
+
       var addPhoto = function(){
         $.get('/admin/getphotoform', null, function(response){
           $('#photo-list').append(response);
         });
       };
       $('#newPhotoBtn').click(addPhoto);
-    <script>
+    </script>
   </body>
 </html>
