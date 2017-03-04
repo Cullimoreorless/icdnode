@@ -2,3 +2,11 @@
   width:100%;
   height:150px;
 }
+
+
+.sticky-top.stick{
+  margin-top: 0 !important;
+  position: fixed !important;
+  top: 0;
+  z-index: 10000;
+}

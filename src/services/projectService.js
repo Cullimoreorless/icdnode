@@ -35,7 +35,7 @@ var projectService = function(models){
         });
     }
     else{
-      models.Project.create(project).then(function(response){
+      models.Project.create(project, {include:models.Photo}).then(function(response){
         callback(null, encodedProjectName);
       }).error(function(error){
         callback(error, false);

@@ -6,17 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Edit Project</title>
     <!--bower:css-->
-    <link rel="stylesheet" href="..//lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="..//lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
     <!--endbower-->
     <!--bower:js-->
-    <script src="..//lib/jquery/dist/jquery.js"></script>
-    <script src="..//lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
     <!--endbower-->
     <!--inject:css-->
     <link rel="stylesheet" href="/css/style.css">
     <!--endinject-->
     <!--inject:js-->
+    <script src="/js/script.js"></script>
     <!--endinject-->
     <!--[if lf IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -38,48 +39,45 @@
               <button class="btn" id="projectPhotosBtn">Photos</button>
             </div>
           </div>
-          <div class="row" id="projectInfo">
-            <div class="col-sm-8">
-              <form action="/admin/saveproject" method="post">
-                <div class='form-group'>
-                  <label>Project Name</label>
-                  <input class='form-control' type='text' value='<%= project.name %>' name='name'>
-                </div>
-                <div class='form-group'>
-                  <label>Description</label>
-                  <textarea name="description" class="form-control"><%= project.description %></textarea>
-                </div>
-                <div class='form-group'>
-                  <label>Teaser (short description)</label>
-                  <input class='form-control' type='text' value='<%= project.teaser %>' name='teaser'>
-                </div>
-                <div class="form-group">
-                  <label>
-                    <input type="checkbox" name="featured" checked='<%=project.featured %>' /> Featured (will show up on front page)
-                  </label>
-                </div>
-                <input type="submit" class="btn btn-primary" value="Save Project" />
-              </form>
+          <div class="sticky-anchor">
+            <div class="row" id="projectInfo">
+              <div class="col-sm-8">
+                <form action="/admin/saveproject" method="post">
+                  <div class='form-group'>
+                    <label>Project Name</label>
+                    <input class='form-control' type='text' value='<%= project.name %>' name='name'>
+                  </div>
+                  <div class='form-group'>
+                    <label>Description</label>
+                    <textarea name="description" class="form-control"><%= project.description %></textarea>
+                  </div>
+                  <div class='form-group'>
+                    <label>Teaser (short description)</label>
+                    <input class='form-control' type='text' value='<%= project.teaser %>' name='teaser'>
+                  </div>
+                  <div class="form-group">
+                    <label>
+                      <input type="checkbox" name="featured" checked='<%=project.featured %>' /> Featured (will show up on front page)
+                    </label>
+                  </div>
+                  <input type="submit" class="btn btn-primary" value="Save Project" />
+                </form>
+              </div>
             </div>
-          </div>
-          <div class="row" id="projectPhotos">
-            <div class="col-sm-6">
-              <div id="photo-list">
-              // OK, so the plan will be to add a photo tile here for every photo, with the options
-              // to change the order, edit or delete.
-              // Edit will push the photo info into the right-hand photo form
-              // Delete will confirm then delete.
-              // Also for the tile itself, look into bootstrap "conditionals" like .hidden-xs-down
+            <div class="row" id="projectPhotos">
+              <div class="col-sm-8">
                 <% if(project.photos && project.photos.length){ %> 
                   <% for(var i = 0; i < project.photos.length; i++){ %> 
                     <% var photo = project.photos[i]; %>
-                    <% include ./photoform %>
+                    <% include ./../projects/phototile %>
                   <% } %>
                 <% } %>
               </div>
-            </div>
-            <div class="col-sm-6">
-              <button id="newPhotoBtn" class="btn btn-primary">New Photo</button>
+              <div class="col-sm-4">
+                <div ></div>
+                <div id="photo-list" class="sticky-top"></div>
+                <button id="newPhotoBtn" class="btn btn-primary">New Photo</button>
+              </div>
             </div>
           </div>
         </div>
@@ -89,17 +87,13 @@
       <% include ../common/footer %>
     </footer>
     <script type='text/javascript'>
-      var checkOrAddClass = function(elem, className){
-        if(!elem.hasClass(className)){
-          elem.addClass(className);
-        }
-      }
+      
 
       var projectInfoDiv = $('#projectInfo'); 
       var projectPhotosDiv = $('#projectPhotos');
       var projectInfoBtn = $('#projectInfoBtn');
       var projectPhotosBtn = $('#projectPhotosBtn');
-      projectPhotosDiv.hide();
+      elementsToHideOnLoad.push(projectPhotosDiv);
 
       var showProjectInfo = function(){
         projectInfoDiv.show();

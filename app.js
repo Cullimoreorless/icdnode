@@ -65,11 +65,27 @@ db.sync({force:true}).then(function(){
   console.log('db synced');
   //console.log(models);
   models.SiteConfiguration.create({
-    logourl:'photo.jpg',
-    logoalttext:'site logo',
-    introtext:'welcome to this site',
-    sitetitle:'Site Title',
+    logourl:'Screen-Shot-2014-01-15-at-71404-PM.png',
+    logoalttext:'Ian C Design',
+    introtext:'This is the product design portfolio for Ian Cullimore',
+    sitetitle:'Ian C Design',
     contactemail:'me@thisdomain.com'
+  });
+  projectService.saveProject({
+    name: 'Exciting Project',
+    description: 'This is the most exciting project from Ian C Design if you don\'t count the others',
+    teaser:'This project is exciting',
+    featured:true,
+    photos:[{
+          title:'Logo',
+          url: 'Screen-Shot2014-01-15at71404PM.png',
+          caption:'You may have noticed this is the logo. Also quite the project',
+          description: 'The logo holds both an \'I\' shape overall, and a \'C\' shape. Clever, eh?',
+          type:'Tile',
+          order:1
+    }]
+  }, function(err, projecturl){
+    console.log(err || 'created' + projecturl);
   });
   userService.createUser({username:'icdadmin',password:'admin'}, function(error, response){
     if(error){

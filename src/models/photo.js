@@ -7,6 +7,7 @@ module.exports = function(db){
     url: Sequelize.STRING,
     caption: Sequelize.STRING(100),
     title: Sequelize.STRING(60),
+    description: Sequelize.STRING(1000),
     type: Sequelize.ENUM('Banner','Tile'),
     order: Sequelize.INTEGER
   });
