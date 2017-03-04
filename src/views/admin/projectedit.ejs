@@ -65,6 +65,11 @@
           <div class="row" id="projectPhotos">
             <div class="col-sm-6">
               <div id="photo-list">
+              // OK, so the plan will be to add a photo tile here for every photo, with the options
+              // to change the order, edit or delete.
+              // Edit will push the photo info into the right-hand photo form
+              // Delete will confirm then delete.
+              // Also for the tile itself, look into bootstrap "conditionals" like .hidden-xs-down
                 <% if(project.photos && project.photos.length){ %> 
                   <% for(var i = 0; i < project.photos.length; i++){ %> 
                     <% var photo = project.photos[i]; %>
@@ -72,6 +77,8 @@
                   <% } %>
                 <% } %>
               </div>
+            </div>
+            <div class="col-sm-6">
               <button id="newPhotoBtn" class="btn btn-primary">New Photo</button>
             </div>
           </div>
