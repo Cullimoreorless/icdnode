@@ -4,13 +4,13 @@ $(function(){
   $(window).scroll(stickObjsToTop);
   elementsToHideOnLoad.forEach(function(element){
     element.hide();
-  })
+  });
 });
 var checkOrAddClass = function(elem, className){
   if(!elem.hasClass(className)){
     elem.addClass(className);
   }
-}
+};
 
 var stickyTopPixels = [];
 var findStickyTops = function(){
@@ -36,6 +36,6 @@ var stickObjsToTop = function(){
     else{
       $('.stick-to-' + topPixel).removeClass('stick');
     }
-  })
+  });
 };
 

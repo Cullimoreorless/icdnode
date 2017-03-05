@@ -30,6 +30,10 @@ var router = function(adminController, photoUpload){
   adminRouter.route('/saveproject')
     .post(adminController.saveProject);
 
+  adminRouter.post('/savephoto',
+    photoUpload.single('photo'),
+    adminController.savePhoto);
+
   adminRouter.route('/getphotoform')
     .get(function(req, res){
       ejs.renderFile(__dirname + '/../views/admin/photoform.ejs', 

@@ -1,5 +1,5 @@
 
-var adminController = function(siteConfigService, projectService){
+var adminController = function(siteConfigService, projectService, photoService){
   var getSiteConfigPage = function(req, res){
     siteConfigService.getSiteConfig(function(err, conf){
       res.render('admin/siteconfig');
@@ -63,13 +63,29 @@ var adminController = function(siteConfigService, projectService){
     });
   };
 
+  var savePhoto = function(req, res){
+    photoService.savePhoto({
+      photoid: req.body.photoid,
+      url: req.body.filename,
+      caption: req.body.caption,
+      title: req.body.title,
+      description: req.body.description,
+      projectid: parseInt(req.body.projectid),
+      type: req.body.type
+    }, function(error, photo){
+      console.log(error || photo);
+      res.redirect('/admin/portal');
+    });
+  };
+
   return {
     getNewProjectPage: getNewProjectPage,
     editProjectPage: editProjectPage,
     getSiteConfigPage: getSiteConfigPage,
     saveSiteConfig: saveSiteConfig,
     getProjectList: getProjectList,
-    saveProject:saveProject
+    saveProject:saveProject,
+    savePhoto: savePhoto
   };
 };
 

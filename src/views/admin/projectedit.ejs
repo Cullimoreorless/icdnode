@@ -27,6 +27,11 @@
     <header role="banner">
       <% include ../common/header %>
     </header>
+    <script>
+      function selectPhotoToEdit(photo){
+
+      }
+    </script>
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
@@ -60,23 +65,46 @@
                       <input type="checkbox" name="featured" checked='<%=project.featured %>' /> Featured (will show up on front page)
                     </label>
                   </div>
+                  <input type="hidden" name="projectid" value="<%= project.projectid%>" />
                   <input type="submit" class="btn btn-primary" value="Save Project" />
                 </form>
               </div>
             </div>
             <div class="row" id="projectPhotos">
-              <div class="col-sm-8">
-                <% if(project.photos && project.photos.length){ %> 
-                  <% for(var i = 0; i < project.photos.length; i++){ %> 
-                    <% var photo = project.photos[i]; %>
-                    <% include ./../projects/phototile %>
-                  <% } %>
-                <% } %>
+              <div class="col-sm-8" style="min-height:1300px;">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Photos</th>
+                      <th>Options</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if(project.photos && project.photos.length){ %> 
+                      <% for(var i = 0; i < project.photos.length; i++){ %> 
+                        <% var photo = project.photos[i]; %>
+                        <tr>
+                          <td>
+                            <% include ./../projects/phototile %>
+                          </td>
+                          <td>
+                            <button class="btn btn-primary" 
+                              onclick="selectPhotoToEdit({photoid:<%=photo.photoid%>, title:'<%=photo.title%>', caption:'<%=photo.caption%>', description:'<%= photo.description %>', type:'<%=photo.type%>'})" >
+                              Edit
+                            </button>
+                            <button class="btn btn-danger">Delete</button>
+                          </td>
+                        </tr>
+                      <% } %>
+                    <% } %>
+                  </tbody>
+                </table>
               </div>
               <div class="col-sm-4">
                 <div ></div>
-                <div id="photo-list" class="sticky-top"></div>
-                <button id="newPhotoBtn" class="btn btn-primary">New Photo</button>
+                <div class="sticky-top">
+                  <% include ./photoform %>
+                </div>
               </div>
             </div>
           </div>
@@ -111,12 +139,6 @@
       projectInfoBtn.click(showProjectInfo);
       projectPhotosBtn.click(showProjectPhotos);
 
-      var addPhoto = function(){
-        $.get('/admin/getphotoform', null, function(response){
-          $('#photo-list').append(response);
-        });
-      };
-      $('#newPhotoBtn').click(addPhoto);
     </script>
   </body>
 </html>

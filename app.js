@@ -48,6 +48,7 @@ require('./src/authentication/passport')(app, userService);
 
 var siteConfigService = require('./src/services/siteConfigService')(models);
 var projectService = require('./src/services/projectService')(models);
+var photoService = require('./src/services/photoService')(models);
 
 app.use(function(req, res, next){
   siteConfigService.getSiteConfig(function(error, response){
@@ -80,7 +81,7 @@ db.sync({force:true}).then(function(){
           title:'Logo',
           url: 'Screen-Shot2014-01-15at71404PM.png',
           caption:'You may have noticed this is the logo. Also quite the project',
-          description: 'The logo holds both an \'I\' shape overall, and a \'C\' shape. Clever, eh?',
+          description: 'The logo holds both an I shape overall, and a C shape. Clever, eh?',
           type:'Tile',
           order:1
     }]
@@ -100,7 +101,7 @@ db.sync({force:true}).then(function(){
 app.set('views','./src/views');
 app.set('view engine', 'ejs');
 
-var adminController = require('./src/controllers/adminController')(siteConfigService, projectService);
+var adminController = require('./src/controllers/adminController')(siteConfigService, projectService, photoService);
 var adminRouter = require('./src/routes/adminRoutes')(adminController, photoUpload);
 
 app.use('/admin', adminRouter);
