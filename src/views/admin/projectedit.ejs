@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Edit Project</title>
     <!--bower:css-->
-    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="..//lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="..//lib/font-awesome/css/font-awesome.min.css" />
     <!--endbower-->
     <!--bower:js-->
-    <script src="/lib/jquery/dist/jquery.js"></script>
-    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="..//lib/jquery/dist/jquery.js"></script>
+    <script src="..//lib/bootstrap/dist/js/bootstrap.js"></script>
     <!--endbower-->
     <!--inject:css-->
     <link rel="stylesheet" href="/css/style.css">
@@ -83,18 +83,7 @@
                     <% if(project.photos && project.photos.length){ %> 
                       <% for(var i = 0; i < project.photos.length; i++){ %> 
                         <% var photo = project.photos[i]; %>
-                        <tr>
-                          <td>
-                            <% include ./../projects/phototile %>
-                          </td>
-                          <td>
-                            <button class="btn btn-primary" 
-                              onclick="selectPhotoToEdit({photoid:<%=photo.photoid%>, title:'<%=photo.title%>', caption:'<%=photo.caption%>', description:'<%= photo.description %>', type:'<%=photo.type%>'})" >
-                              Edit
-                            </button>
-                            <button class="btn btn-danger">Delete</button>
-                          </td>
-                        </tr>
+                        <% include ./phototablerow %>
                       <% } %>
                     <% } %>
                   </tbody>

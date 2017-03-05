@@ -63,8 +63,8 @@ var adminController = function(siteConfigService, projectService, photoService){
     });
   };
 
-  var deleteProject = function(req, res){
-    photoService.deleteProject(req.params.photoId, function(err, result){
+  var deletePhoto = function(req, res){
+    photoService.deletePhoto(req.params.photoId, function(err, result){
       var boolToSend = err ? false : true;
       res.send(boolToSend);
     })
@@ -92,6 +92,7 @@ var adminController = function(siteConfigService, projectService, photoService){
     saveSiteConfig: saveSiteConfig,
     getProjectList: getProjectList,
     saveProject:saveProject,
+    deletePhoto: deletePhoto,
     savePhoto: savePhoto
   };
 };

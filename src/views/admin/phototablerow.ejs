@@ -1,0 +1,13 @@
+
+<tr id="photoid-<%= photo.photoid %>">
+  <td>
+    <% include ./../projects/phototile %>
+  </td>
+  <td>
+    <button class="btn btn-primary" 
+      onclick="selectPhotoToEdit({photoid:<%=photo.photoid%>, title:'<%=photo.title%>', caption:'<%=photo.caption%>', description:'<%= photo.description %>', type:'<%=photo.type%>'})" >
+      Edit
+    </button>
+    <button class="btn btn-danger">Delete</button>
+  </td>
+</tr>
