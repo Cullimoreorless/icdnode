@@ -67,8 +67,8 @@ var adminController = function(siteConfigService, projectService, photoService){
     photoService.deletePhoto(req.params.photoId, function(err, result){
       var boolToSend = err ? false : true;
       res.send(boolToSend);
-    })
-  }
+    });
+  };
 
   var savePhoto = function(req, res){
     photoService.savePhoto({

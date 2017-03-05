@@ -4,10 +4,11 @@
     <% include ./../projects/phototile %>
   </td>
   <td>
-    <button class="btn btn-primary" 
+    <button class="btn btn-primary btn-xs" 
       onclick="selectPhotoToEdit({photoid:<%=photo.photoid%>, title:'<%=photo.title%>', caption:'<%=photo.caption%>', description:'<%= photo.description %>', type:'<%=photo.type%>'})" >
       Edit
     </button>
-    <button class="btn btn-danger">Delete</button>
+    <button class="btn btn-danger btn-xs"
+      onclick="deletePhoto(<%= photo.photoid %>)">Delete</button>
   </td>
 </tr>

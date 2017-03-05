@@ -41,6 +41,6 @@ var photoService = function(models){
     savePhoto: savePhoto,
     deletePhoto: deletePhoto
   };
-}
+};
 
 module.exports = photoService;

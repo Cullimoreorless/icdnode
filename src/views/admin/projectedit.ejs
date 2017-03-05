@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Edit Project</title>
     <!--bower:css-->
-    <link rel="stylesheet" href="..//lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="..//lib/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
     <!--endbower-->
     <!--bower:js-->
-    <script src="..//lib/jquery/dist/jquery.js"></script>
-    <script src="..//lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
     <!--endbower-->
     <!--inject:css-->
     <link rel="stylesheet" href="/css/style.css">
@@ -19,7 +19,7 @@
     <!--inject:js-->
     <script src="/js/script.js"></script>
     <!--endinject-->
-    <!--[if lf IE 9]>
+    <!--[if lt IE 9]>
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
@@ -28,6 +28,19 @@
       <% include ../common/header %>
     </header>
     <script>
+      function deletePhoto(photoId){
+        if(confirm('Are you sure you want to delete photo?')){
+          $.get('/admin/deletephoto/'+photoId, null,
+            function(successFlag){ 
+              if(successFlag){
+                $('#photoid-'+photoId).remove();
+              }
+              else{
+                alert('Could not delete photo, please try again!');
+              }
+            });
+        }
+      }
       function selectPhotoToEdit(photo){
 
       }
