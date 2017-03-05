@@ -30,8 +30,8 @@ gulp.task('inject', function(){
     ignorePath: '../../public'
   };
 
+    //.pipe(wiredep(options))
   return gulp.src('./src/views/**/*.ejs')
-    .pipe(wiredep(options))
     .pipe(inject(injectSrc, injectOptions))
     .pipe(gulp.dest('./src/views'));
 });
