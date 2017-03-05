@@ -12,21 +12,34 @@ var photoService = function(models){
       });
     }
     else{
-      models.Project.findById(parseInt(photoToSave.projectid)).then(function(project){
-        project.addPhotos([photoToSave]).then(function(response){
-          callback(null, response);
+      models.Photo.create(photoToSave).then(function(savedPhoto){
+        models.Project.findById(parseInt(photoToSave.projectid)).then(function(project){
+          project.addPhoto(savedPhoto).then(function(response){
+            callback(null, response);
+          }).error(function(error){
+            callback(error, false);
+          });
         }).error(function(error){
           callback(error, false);
-        })
-      }).error(function(err){
-        callback(err, false);
+        });
+      }).error(function(error){
+        callback(error, false);
       });
     }
   };
 
+  var deletePhoto = function(deleteId, callback){
+    models.Photo.destroy({where: {photoid: parseInt(deleteId)}}).then(function(response){
+      callback(null, response);
+    }).error(function(error){
+      callback(error, false);
+    });
+  };
+
 
   return {
-    savePhoto: savePhoto
+    savePhoto: savePhoto,
+    deletePhoto: deletePhoto
   };
 }
 
