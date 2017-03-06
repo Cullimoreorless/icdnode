@@ -5,7 +5,7 @@ var photoService = function(models){
       models.Photo.update(photoToSave, {where:{photoid: photoToSave.photoid},
           include:{model:models.Project}}).then(
         function(response){
-          callback(null, response);
+          callback(null, photoToSave);
         }
       ).error(function(error){
         callback(error, false);

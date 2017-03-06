@@ -1,5 +1,5 @@
 <% var photo = { photoid:0, url: '', title: '', caption:'', description: '' } %>
-<form name="photoform" action="/admin/savephoto" enctype="multipart/form-data" method="post">
+<form id="photoform" method="post" enctype="multipart/form-data" >
   <div class='form-group'>
     <label>Photo </label> <br />
     Recommended at least 400px width for tile photos, 1000px+ for banner photos
@@ -26,13 +26,36 @@
   </div>
   <input type="hidden" id="projectId" name="projectid" value="<%= project.projectid %>" />
   <input type="hidden" id="photoId" name="photoid" value="<%= photo.photoid %>"/>
-  <input type="submit" class="btn btn-primary" value="Save Photo">
+  <input type="button" id="savePhotoBtn" class="btn btn-primary" value="Save Photo">
   <input type="button" class="btn" id="cancelEdit" value="Cancel">
 </form>
 <script>
+  $('#photoform').submit(function(event){
+    event.preventDefault();
+
+    var formData = new FormData($(this)[0]);
+    $.ajax({
+      url:'/admin/savephoto',
+      type:'post',
+      data: formData,
+      dataType:'html',
+      processData:false,
+      contentType:false,
+      success:function(data, success){
+        console.log('data: ' + data + ' success: ' + success);
+      },
+      error: function(xhr, data, err){
+        console.log('error: ' + err);
+      }
+    });
+
+  });
+  $('#savePhotoBtn').click(function(){
+    $('#photoform').submit();
+  })
   var cancelEdit = function(){
-    selectPhotoToEdit({ photoid:0, url: '', title: '', caption:'', description: '' });
-  }
+    selectPhotoToEdit({ photoid:'0', url: '', title: '', caption:'', description: '' });
+  };
   var selectPhotoToEdit = function(photoToEdit){
     $('#photoId').val(photoToEdit.photoid);
     $('#photoType').val(photoToEdit.type);

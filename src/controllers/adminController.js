@@ -1,4 +1,6 @@
 
+var ejs = require('ejs');
+
 var adminController = function(siteConfigService, projectService, photoService){
   var getSiteConfigPage = function(req, res){
     siteConfigService.getSiteConfig(function(err, conf){
@@ -71,6 +73,7 @@ var adminController = function(siteConfigService, projectService, photoService){
   };
 
   var savePhoto = function(req, res){
+    console.log(req.body);
     photoService.savePhoto({
       photoid: req.body.photoid,
       url: req.body.filename,
@@ -79,9 +82,17 @@ var adminController = function(siteConfigService, projectService, photoService){
       description: req.body.description,
       projectid: parseInt(req.body.projectid),
       type: req.body.type
-    }, function(error, photo){
-      console.log(error || photo);
-      res.redirect('/admin/portal');
+    }, function(error, retPhoto){
+      console.log('START HERE');
+      console.log(error || retPhoto);
+      ejs.renderFile(__dirname + '/../views/admin/phototablerow.ejs', 
+        {photo: retPhoto},
+        function(error, responseString){
+          if(responseString){
+            console.log(responseString);
+            res.send(responseString);
+          }
+        });
     });
   };
 
