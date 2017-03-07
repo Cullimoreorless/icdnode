@@ -2,16 +2,15 @@ var photoService = function(models){
   var savePhoto = function(photoToSave, callback){
     photoToSave.photoid = parseInt(photoToSave.photoid);
     if(photoToSave.photoid){
-      models.Photo.update(photoToSave, {where:{photoid: photoToSave.photoid},
-          include:{model:models.Project}}).then(
-        function(response){
+      models.Photo.update(photoToSave, 
+        {where:{photoid: photoToSave.photoid}, include:{model:models.Project}})
+        .then(function(response){
           models.Photo.findById(response[0]).then(function(photo){
             callback(null, photo);
           });
-        }
-      ).error(function(error){
-        callback(error, false);
-      });
+        }).error(function(error){
+          callback(error, false);
+        });
     }
     else{
       models.Photo.create(photoToSave).then(function(savedPhoto){

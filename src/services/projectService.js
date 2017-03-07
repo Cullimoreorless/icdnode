@@ -26,7 +26,7 @@ var projectService = function(models){
     var encodedProjectName = encodeProjectName(project.name);
     project.featured = project.featured ? true : false;
     project.url = encodedProjectName;
-    if(project.projectid){
+    if(parseInt(project.projectid)){
       models.Project.update(project, {where:{projectid: project.projectid}})
         .then(function(response){
           callback(null, encodedProjectName);
