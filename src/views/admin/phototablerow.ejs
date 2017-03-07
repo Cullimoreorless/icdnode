@@ -5,7 +5,7 @@
   </td>
   <td>
     <button class="btn btn-primary btn-xs" 
-      onclick="selectPhotoToEdit({photoid:<%=photo.photoid%>, title:'<%=photo.title%>', caption:'<%=photo.caption%>', description:'<%= photo.description %>', type:'<%=photo.type%>'})" >
+      onclick="selectPhotoToEdit(<%= JSON.stringify(photo) %>)" >
       Edit
     </button>
     <button class="btn btn-danger btn-xs"

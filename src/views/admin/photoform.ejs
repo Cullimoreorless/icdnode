@@ -43,6 +43,17 @@
       contentType:false,
       success:function(data, success){
         console.log('data: ' + data + ' success: ' + success);
+        var dataJson = JSON.parse(data);
+        var existingPhoto = $('#photoid-' + dataJson.photoid);
+        if(existingPhoto.length){
+          //if the photo already existed and is just being updated...
+          existingPhoto.replaceWith(dataJson.html);
+        }
+        else{
+          //the photo is new, add to table
+          $('#photoTable').append(dataJson.html);
+        }
+        cancelEdit();
       },
       error: function(xhr, data, err){
         console.log('error: ' + err);

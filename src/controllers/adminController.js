@@ -73,24 +73,23 @@ var adminController = function(siteConfigService, projectService, photoService){
   };
 
   var savePhoto = function(req, res){
-    console.log(req.body);
-    photoService.savePhoto({
+    var photoToSave = {
       photoid: req.body.photoid,
-      url: req.body.filename,
       caption: req.body.caption,
       title: req.body.title,
       description: req.body.description,
       projectid: parseInt(req.body.projectid),
       type: req.body.type
-    }, function(error, retPhoto){
-      console.log('START HERE');
-      console.log(error || retPhoto);
+    };
+    if(req.body.filename){
+      photoToSave.url = req.body.filename;
+    }
+    photoService.savePhoto(photoToSave, function(error, retPhoto){
       ejs.renderFile(__dirname + '/../views/admin/phototablerow.ejs', 
         {photo: retPhoto},
         function(error, responseString){
           if(responseString){
-            console.log(responseString);
-            res.send(responseString);
+            res.send({html:responseString, photoid: retPhoto.photoid});
           }
         });
     });
