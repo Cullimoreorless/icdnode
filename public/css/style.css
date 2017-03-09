@@ -10,3 +10,16 @@
   top: 0;
   z-index: 10000;
 }
+/*classes for photo background slideshow*/
+.bgPhotos{
+  position:relative;
+  width:100%;
+}
+
+.projectTilePhoto {
+  max-width:100%;
+  z-index:1;
+  position:absolute;
+  left:0px;
+  top:0px;
+}

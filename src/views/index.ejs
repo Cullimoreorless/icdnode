@@ -29,11 +29,13 @@
     </header>
     <div class="container">
       <div class="row">
-        <div class="col-sm-4">
-          Greetings from the site
-        </div>
-        <div class="col-sm-8">
+        <div class="col-sm-12">
           <%= conf.introtext %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <% include ./projects/featuredprojects %>
         </div>
       </div>
     </div>

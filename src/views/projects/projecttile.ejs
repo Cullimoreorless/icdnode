@@ -1,0 +1,10 @@
+<div class="col-md-4 col-sm-6 col-xs-12">
+  <h1><%= project.name %></h1>
+  <% if(project.photos && project.photos.length){ %>
+    <div class="bgPhotos" id="projectphotos-<%=project.projectid %>">
+      <% project.photos.forEach(function(photo){ %>
+        <img src="/photos/<%= photo.url %>" class="projectTilePhoto"/>
+      <% }) %>
+    </div>
+  <% } %>
+</div>

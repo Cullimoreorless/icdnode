@@ -43,10 +43,27 @@ var projectService = function(models){
     }
   };
 
+  var getFeaturedProjects = function(callback){
+    models.Project.findAll(
+      { where:{featured:true}, 
+        limit:6,
+        order: [['createdAt','DESC']],
+        include: [{
+          model: models.Photo,
+          order: 'order'
+        }]
+      }).then(function(projects){
+        callback(null, projects);
+      }).error(function(err){
+        callback(err, false);
+      });
+  };
+
   return {
     getProjectsList: getProjectsList,
     getProjectToEdit: getProjectToEdit,
-    saveProject: saveProject
+    saveProject: saveProject,
+    getFeaturedProjects: getFeaturedProjects
   };
 };
 
