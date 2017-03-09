@@ -8,7 +8,7 @@ $(function(){
   getNumberOfPhotosPerProject();
   if(projTileIds.length){
     projTileIds.forEach(function(tileId){
-      $('#'+ tileId + ' img:gt(0)').hide();
+      $('#'+ tileId + ' div.projectTilePhoto:gt(0)').hide();
     });
     startSlideshows();
   }
@@ -28,12 +28,12 @@ var startSlideshows = function(){
 };
 var nextSlideShowPhoto = function(projPhotosId){
   $('#'+projPhotosId + ' :first-child').fadeOut()
-    .next('img').fadeIn().end().appendTo('#'+projPhotosId);
+    .next('div.projectTilePhoto').fadeIn().end().appendTo('#'+projPhotosId);
 };
 var getNumberOfPhotosPerProject = function(){
   $('.bgPhotos').each(function(index, elem){
     var thisId = $(this).attr('id');
-    numPhotoPerProject[thisId] = $(this).children('img.projectTilePhoto').length;
+    numPhotoPerProject[thisId] = $(this).children('div.projectTilePhoto').length;
     projTileIds.push(thisId);
   });
 };

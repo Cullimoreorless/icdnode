@@ -3,8 +3,13 @@
   <% if(project.photos && project.photos.length){ %>
     <div class="bgPhotos" id="projectphotos-<%=project.projectid %>">
       <% project.photos.forEach(function(photo){ %>
-        <img src="/photos/<%= photo.url %>" class="projectTilePhoto"/>
+        <div class="projectTilePhoto" style="background-image: url('/photos/<%= photo.url %>')" >
+          <%= photo.caption %>
+        </div>
       <% }) %>
     </div>
+      <div style="z-index:100;">
+        <%= project.teaser %>
+      </div>
   <% } %>
 </div>
