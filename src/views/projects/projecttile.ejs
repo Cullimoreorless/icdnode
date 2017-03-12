@@ -1,12 +1,19 @@
 <div class="col-md-4 col-sm-6 col-xs-12">
-  <h1><%= project.name %></h1>
+  <h3><%= project.name %></h3>
   <% if(project.photos && project.photos.length){ %>
-    <div class="bgPhotos" id="projectphotos-<%=project.projectid %>">
-      <% project.photos.forEach(function(photo){ %>
-        <div class="projectTilePhoto" style="background-image: url('/photos/<%= photo.url %>')" >
-          <%= photo.caption %>
-        </div>
-      <% }) %>
+    <div >
+      <div class="bgPhotos slide-show" id="projectphotos<%=project.projectid %>">
+        <% project.photos.forEach(function(photo){ %>
+          <img  class="projPhoto slide" src="/photos/<%= photo.url %>" style="max-width:100%;" />
+        <% }) %>
+      </div>
+      <div class="photoCaptions slide-show" id="projectcaptions<%=project.projectid %>">
+        <% project.photos.forEach(function(photo){ %>
+          <div class="photoOverlay slide" style="position:relative;height:400px;">
+            <%= photo.caption %>
+          </div>
+        <% }) %>
+      </div>
     </div>
       <div style="z-index:100;">
         <%= project.teaser %>
