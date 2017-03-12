@@ -27,8 +27,8 @@ var startSlideshows = function(){
   });
 };
 var nextSlide = function(containerId){
-  $('#'+containerId + ' :first-child').fadeOut()
-    .next('.slide').fadeIn().end().appendTo('#'+containerId);
+  $('#'+containerId + ' :first-child').fadeOut(400).delay(800)
+    .next('.slide').delay(400).fadeIn().end().appendTo('#'+containerId);
 };
 var getNumberOfSlides = function(slideClass){
   $('.slide-show').each(function(index, elem){
