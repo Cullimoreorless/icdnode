@@ -141,8 +141,11 @@ app.set('view engine', 'ejs');
 
 var adminController = require('./src/controllers/adminController')(siteConfigService, projectService, photoService);
 var adminRouter = require('./src/routes/adminRoutes')(adminController, photoUpload);
-
 app.use('/admin', adminRouter);
+
+var projectController = require('./src/controllers/projectController')(projectService);
+var projectRouter = require('./src/routes/projectRoutes')(projectController);
+app.use('/projects', projectRouter);
 
 app.get('/', function(req, res){
   projectService.getFeaturedProjects(function(err, projects){

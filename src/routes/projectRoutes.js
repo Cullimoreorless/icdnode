@@ -3,7 +3,9 @@ var projectRouter = express.Router();
 
 var router = function(projectController){
   //todo: home page using get featured call
-  projectRouter.route('/project-detail/:projecturl');
+  projectRouter.route('/:projecturl')
+    .get(projectController.getProjectPage);
+  
   return projectRouter;
 };
 
