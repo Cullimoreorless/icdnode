@@ -18,7 +18,15 @@
 .projPhoto{
   position:absolute;
 }
-
+.photoOverlay{
+  padding-top:150px;
+  position:relative;
+  height:300px;
+  vertical-align: bottom;
+  color:grey;
+  background-color: rgba(40,40,40,0.9);
+  background:linear-gradient(0deg, rgba(0,0,0,0), rbga(40,40,40,0.9))
+}
 .projectTilePhoto {
   width:100%;
   height:400px;

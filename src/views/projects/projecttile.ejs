@@ -1,4 +1,4 @@
-<div class="col-md-4 col-sm-6 col-xs-12">
+<div class="col-md-4 col-sm-6 col-xs-12" style="padding-left:0px;padding-right:0px;">
   <h3><%= project.name %></h3>
   <% if(project.photos && project.photos.length){ %>
     <div >
@@ -9,7 +9,7 @@
       </div>
       <div class="photoCaptions slide-show" id="projectcaptions<%=project.projectid %>">
         <% project.photos.forEach(function(photo){ %>
-          <div class="photoOverlay slide" style="position:relative;height:400px;">
+          <div class="photoOverlay slide">
             <%= photo.caption %>
           </div>
         <% }) %>
