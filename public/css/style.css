@@ -27,7 +27,6 @@
   position:absolute;
   bottom:0px;
   color:rgba(250,250,250, 0.9);
-  /*background-color:rgba(30,30,30,0.4);*/
   background:linear-gradient(transparent 20%, black );
   width:100%;
   min-height:60px;
@@ -49,5 +48,7 @@
   vertical-align: bottom;
   color:rgba(250,250,250, 0.9);
   background-color: rgba(40,40,40,0.7);
-  /*background:linear-gradient(rgba(40,40,40,0.4) 60%, black )*/
+}
+.projectTitle{
+  font-size: 14pt;
 }
