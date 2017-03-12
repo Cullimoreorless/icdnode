@@ -5,7 +5,7 @@ var passport = require('passport');
 var session = require('express-session');
 var Sequelize = require('sequelize');
 var multer = require('multer');
-
+var config = require('./configuration').environments['dev'];
 
 var photoDirectory = __dirname + '/public/photos/';
 var storage = multer.diskStorage({
@@ -24,7 +24,7 @@ var storage = multer.diskStorage({
 var photoUpload = multer({storage: storage});
 
 
-var db = new Sequelize('icd_design_db', 'icdadmin','icd17Design!', {
+var db = new Sequelize(config.dbname, config.dbuser, config.dbpw, {
   host: 'localhost',
   port: 3306,
   dialect: 'mysql'
@@ -126,7 +126,7 @@ db.sync({force:true}).then(function(){
   }, function(err, projecturl){
     console.log(err || 'created' + projecturl);
   });
-  userService.createUser({username:'icdadmin',password:'admin'}, function(error, response){
+  userService.createUser({username:config.adminusername,password:config.adminpassword}, function(error, response){
     if(error){
       console.error(error);
     }

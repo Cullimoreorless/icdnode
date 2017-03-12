@@ -50,7 +50,8 @@ var projectService = function(models){
         order: [['createdAt','DESC']],
         include: [{
           model: models.Photo,
-          order: 'order'
+          order: 'order',
+          where: {type: 'Tile'}
         }]
       }).then(function(projects){
         callback(null, projects);
@@ -59,11 +60,36 @@ var projectService = function(models){
       });
   };
 
+  var getProjectDetails = function(projecturl, callback){
+    
+    models.Project.findAll(
+      { where:{url:projecturl},
+        include: [{ model: models.Photo, orderBy: 'order' }]
+      }).then(function(projects){
+        console.log(projects);
+        var projectToReturn = projects[0];
+        projectToReturn.tilePhotos = [];
+        projectToReturn.bannerPhoto = null;
+        projectToReturn.photos.map(function(photo){
+          if(photo.type = 'Tile'){
+            projectToReturn.tilePhotos.push(photo);
+          }
+          else if(photo.type='Banner'){
+            projectToReturn.bannerPhoto = photo;
+          }
+        });
+        callback(null, projectToReturn);
+      }).error(function(error){
+        callback(error, false);
+      });
+  };
+
   return {
     getProjectsList: getProjectsList,
     getProjectToEdit: getProjectToEdit,
     saveProject: saveProject,
-    getFeaturedProjects: getFeaturedProjects
+    getFeaturedProjects: getFeaturedProjects,
+    getProjectDetails: getProjectDetails
   };
 };
 

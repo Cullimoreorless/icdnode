@@ -9,8 +9,6 @@ var adminController = function(siteConfigService, projectService, photoService){
   };
 
   var saveSiteConfig = function(req, res){
-    console.log(req.file);
-    console.log(req.body);
     siteConfigService.saveSiteConfig(
       {
         logourl: req.body.filename,
