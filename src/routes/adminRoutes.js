@@ -37,6 +37,9 @@ var router = function(adminController, photoUpload){
   adminRouter.route('/deletePhoto/:photoId')
     .get(adminController.deletePhoto);
 
+  adminRouter.route('/deleteproject/:projectid')
+    .get(adminController.deleteProject);
+
   adminRouter.route('/getphotoform')
     .get(function(req, res){
       ejs.renderFile(__dirname + '/../views/admin/photoform.ejs', 

@@ -40,15 +40,23 @@
                 <th>Project Name</th>
                 <th>Teaser</th>
                 <th>Featured</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
               <% if(locals.projects){ %>
                 <% projects.forEach(function(project){%>
-                  <tr onclick="window.location='/admin/project/<%= project.url %>';">
+                  <tr onclick="event.stopPropagation();navigateToProject(event, '<%=project.url%>')">
                     <td><%= project.name %></td>
                     <td><%= project.teaser %></td>
-                    <td><%= project.featured %></td>
+                    <td><%= project.featured  ? 'Yes' : 'No' %></td>
+                    <td>
+                      <button data-projectid="<%=project.projectid%>" 
+                          data-projectname="<%=project.name%>" 
+                        class="btn btn-xs btn-danger deleteProjBtn">
+                        Delete
+                      </button>
+                    </td>
                   </tr>
                 <%})%>
               <%}%>
@@ -61,5 +69,26 @@
     <footer>
       <% include ../common/footer %>
     </footer>
+    <script type="text/javascript">
+      function navigateToProject(event, projectUrl){
+        event.stopPropagation();
+        event.preventDefault();
+        window.location='/admin/project/' +projectUrl;
+      }
+      $('.deleteProjBtn').click(function(event){
+        event.stopPropagation();
+        var $this = $(this);
+        deleteProject($this.data('projectid'), $this.data('projectname'), $this);
+      });
+      function deleteProject(projectId, projectName, element){
+        if(confirm('Are you sure you want to delete the project "'+projectName+'"?')){
+          $.get('/admin/deleteproject/'+projectId, null, function(success){
+            if(success){
+              element.parents('tr').first().remove();
+            }
+          });
+        }
+      }
+    </script>
   </body>
 </html>

@@ -1,6 +1,6 @@
 var projectService = function(models){
   var getProjectsList = function(callback){
-    models.Project.findAll({attributes:['name','teaser','featured','url']}).then(function(response){
+    models.Project.findAll({attributes:['projectid','name','teaser','featured','url']}).then(function(response){
       callback(null, response);
     }).error(function(error){
       callback(error, false);
@@ -73,12 +73,22 @@ var projectService = function(models){
       });
   };
 
+  var deleteProject = function(projectId, callback){
+    models.Project.destroy({where:{projectid:projectId}})
+      .then(function(response){
+        callback(null, true);
+      }).error(function(error){
+        callback(error, false);
+      })
+  }
+
   return {
     getProjectsList: getProjectsList,
     getProjectToEdit: getProjectToEdit,
     saveProject: saveProject,
     getFeaturedProjects: getFeaturedProjects,
-    getProjectDetails: getProjectDetails
+    getProjectDetails: getProjectDetails,
+    deleteProject: deleteProject
   };
 };
 
