@@ -147,7 +147,7 @@ app.use('/admin', adminRouter);
 app.get('/', function(req, res){
   projectService.getFeaturedProjects(function(err, projects){
     if(projects){
-      res.render('index', {projects: projects})
+      res.render('index', {projects: projects});
     }
   });
 });
