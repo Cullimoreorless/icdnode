@@ -27,10 +27,39 @@
     <header role="banner">
       <% include ../common/header %>
     </header>
+      <% if(bannerPhoto){ %>
+        <div class="bannerPhotoContainer">
+          <img src="/photos/<%= bannerPhoto.url %>" class="bannerPhoto" />
+          <div class="bannerOverlay">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12" style="height:130px;">
+                  <div class="bannerTitle">
+                    <div>
+                      <h2><%= project.name %></h2>
+                      <%=project.teaser %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% } %>
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <%= JSON.stringify(project) %>
+          <% if(!bannerPhoto){ %>
+            <h2><%= project.name %></h2>
+          <% } %>
+          <div class="projectDescription">
+            <%= project.description %>
+          </div>
+          <% if(tilePhotos && tilePhotos.length){ %>
+            <% tilePhotos.forEach(function(photo){ %>
+              <% include ./phototile %>
+            <% }) %>
+          <% } %>
         </div>
       </div>
     </div>

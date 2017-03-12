@@ -4,7 +4,21 @@ var projectController = function(projectService){
     projectService.getProjectDetails(req.params.projecturl, 
       function(err, project){
         if(project){
-          res.render('projects/projectdetail',{project:project});
+          var tilePhotos = [];
+          var bannerPhoto = null;
+          project.photos.map(function(photo){
+            if(photo.type === 'Tile'){
+              tilePhotos.push(photo);
+            }
+            else if(photo.type ==='Banner'){
+              bannerPhoto = photo;
+            }
+          });
+          res.render('projects/projectdetail',{
+            project:project, 
+            tilePhotos: tilePhotos,
+            bannerPhoto: bannerPhoto
+          });
         }
       }
     );
