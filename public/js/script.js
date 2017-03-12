@@ -1,5 +1,32 @@
 var elementsToHideOnLoad = [];
 $(function(){
+  $('.nav-hover-container').hover(function () {
+      $(this).children('.nav-hover-right').animate({
+        "width": "20px",
+        "right": "88px",
+        "left": "auto",
+        "opacity": "0.3"
+      }, 200);
+      $(this).children('.nav-hover-left').animate({
+        "width": "20px",
+        "left": "18px",
+        "right": "auto",
+        "opacity": "0.3"
+      }, 200);
+    }, function () {
+      $(this).children('.nav-hover-right').animate({
+        "width": "0px",
+        "right": "80px",
+        "left": "auto",
+        "opacity": "0"
+      }, 200);
+      $(this).children('.nav-hover-left').animate({
+        "width": "0px",
+        "left": "10px",
+        "right": "auto",
+        "opacity": "0"
+    }, 200);
+  });
   findStickyTops();
   $(window).scroll(stickObjsToTop);
   elementsToHideOnLoad.forEach(function(element){
