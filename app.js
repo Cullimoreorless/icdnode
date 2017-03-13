@@ -5,7 +5,8 @@ var passport = require('passport');
 var session = require('express-session');
 var Sequelize = require('sequelize');
 var multer = require('multer');
-var config = require('./configuration').environments['dev'];
+var environment = process.env.NODE_ENV || 'dev';
+var config = require('./configuration').environments[environment];
 
 var photoDirectory = __dirname + '/public/photos/';
 var storage = multer.diskStorage({
