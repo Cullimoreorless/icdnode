@@ -57,7 +57,8 @@
             <%= project.description %>
           </div>
           <% if(tilePhotos && tilePhotos.length){ %>
-            <% tilePhotos.forEach(function(photo){ %>
+            <% tilePhotos.forEach(function(photo, index){ %>
+              <% var alternator = index; %>
               <% include ./phototile %>
             <% }) %>
           <% } %>

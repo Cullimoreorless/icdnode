@@ -7,6 +7,14 @@ var Sequelize = require('sequelize');
 var multer = require('multer');
 var environment = process.env.NODE_ENV || 'dev';
 var config = require('./configuration').environments[environment];
+var log4js = require('log4js');
+log4js.configure({
+  appenders: [
+    { type: 'console' },
+    { type: 'file', filename: 'logs/standard.log', category: 'icdnode' }
+  ]
+});
+
 
 var photoDirectory = __dirname + '/public/photos/';
 var storage = multer.diskStorage({
@@ -40,7 +48,11 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 app.use(cookieParser());
-app.use(session({secret:'icdnode'}));
+app.use(session({
+  secret:'icdnode',
+  resave:false,
+  saveUninitialized:true
+}));
 
 var models = require('./src/models/models')(db);
 

@@ -1,12 +1,18 @@
 //var bcrypt = require('bcrypt');
 var simplecrypt = require('simplecrypt');
-var sc = simplecrypt();
+var sc = simplecrypt({
+  salt:'icdnodesaltysalt',
+  password:'%oisa47!@7&289icd#!$*'
+});
+var log4js = require('log4js');
+var logger = log4js.getLogger('icdnode');
 
 var userService = function(models){
   var saltRounds = 10;
   var createUser = function(user, callback){
     //var salt = bcrypt.genSaltSync(10);
     //var passwordHash = bcrypt.hashSync(user.password, salt);
+    
     var passwordHash = sc.encrypt(user.password);
     models.User.create({username:user.username, passwordhash:passwordHash}).then(function(response){
       callback(null, response);
@@ -27,6 +33,8 @@ var userService = function(models){
     getUserByUsername(username).then(function(response){
       var userFromDB = response[0];
       //if(bcrypt.compareSync(password, userFromDB.passwordhash)){
+      logger.info('hashed input: ' + sc.encrypt(password));
+      logger.info('db pwd: ' + userFromDB.passwordhash);
       if(sc.encrypt(password) === userFromDB.passwordhash){
         done(null, userFromDB);
       }

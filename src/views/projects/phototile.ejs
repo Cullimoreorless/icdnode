@@ -1,13 +1,29 @@
 
+<% 
+var photoClass = "col-md-4 col-sm-6 col-xs-12";
+var textClass = "col-md-4 col-sm-6 col-xs-12";
+if(alternator && alternator % 2){ 
+  photoClass = 'col-sm-6 col-md-4 col-md-push-4 col-sm-push-6 col-xs-12';
+  textClass = ' col-md-4 col-md-pull-4 col-sm-6 col-sm-pull-6 col-xs-12';
+ } %>
 <div class="row">
-  <div class="col-sm-6 col-xs-12">
-    <img src="/photos/<%= photo.url %>" style="max-width:100%;" />
+  <% if(alternator && alternator % 2){ %>
+    <div class="col-md-4 tilePhotoSpacer">
+    </div>
+  <% } %>
+  <div class="<%=photoClass%> tilePhotoContainer">
+    <img src="/photos/<%= photo.url %>" class="tilePhoto" />
     <figcaption>
       <span class="photo-title"><%= photo.title %> </span> 
       <%= photo.caption %>
     </figcaption>
   </div>
-  <div class="col-sm-6 col-xs-12">
+  <div class="<%=textClass%>">
     <%= photo.description %>
   </div>
+
+  <% if(!alternator || !(alternator % 2)){ %>
+    <div class="col-md-4 tilePhotoSpacer">
+    </div>
+  <% } %>
 </div> 
