@@ -9,8 +9,9 @@
   z-index: 10000;
 }
 .tilePhotoContainer{
-  padding:8px;
+  padding:8px 8px 30px 8px;
   background-color: rgba(40,40,40,0.4);
+  min-height: 250px;
 }
 .tilePhotoSpacer{
   padding:8px;
@@ -19,6 +20,7 @@
 }
 .tilePhoto{
   max-width:100%;
+  max-height:100%;
   margin-left:auto;
   margin-right:auto;
   display:block;

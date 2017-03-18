@@ -6,9 +6,9 @@ if(alternator && alternator % 2){
   photoClass = 'col-sm-6 col-md-4 col-md-push-4 col-sm-push-6 col-xs-12';
   textClass = ' col-md-4 col-md-pull-4 col-sm-6 col-sm-pull-6 col-xs-12';
  } %>
-<div class="row">
+<div class="row tilePhotoRow">
   <% if(alternator && alternator % 2){ %>
-    <div class="col-md-4 tilePhotoSpacer">
+    <div class="col-md-4 hidden-sm hidden-xs tilePhotoSpacer">
     </div>
   <% } %>
   <div class="<%=photoClass%> tilePhotoContainer">
@@ -23,7 +23,7 @@ if(alternator && alternator % 2){
   </div>
 
   <% if(!alternator || !(alternator % 2)){ %>
-    <div class="col-md-4 tilePhotoSpacer">
+    <div class="col-md-4  hidden-sm hidden-xs tilePhotoSpacer">
     </div>
   <% } %>
 </div> 
