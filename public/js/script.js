@@ -1,5 +1,14 @@
 var elementsToHideOnLoad = [];
 $(function(){
+  $('.projectTile').hover(function(){
+    $(this).find('.photoOverlay').css({
+      'background-color': 'rgba(40,40,40,0.3)',
+      'color':'rgba(230,230,230, 0.95)'});
+  }, function(){
+    $(this).find('.photoOverlay').css({
+      'background-color': 'rgba(40,40,40,0.7)',
+      'color':'rgba(250,250,250, 0.9)'});
+  });
   $('.nav-hover-container').hover(function () {
       $(this).children('.nav-hover-right').animate({
         "width": "20px",

@@ -47,6 +47,7 @@
   min-height:60px;
   padding:8px;
   text-align: center;
+  transition: all 0.4s;
 }
 .projPhoto{
   display: block;
@@ -62,7 +63,8 @@
   max-height:250px;
   vertical-align: bottom;
   color:rgba(250,250,250, 0.9);
-  background-color: rgba(40,40,40,0.7);
+  background-color: rgba(40,40,40,0.5);
+  transition: all 0.4s;
 }
 .projectTitle{
   font-size: 14pt;
