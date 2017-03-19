@@ -13,7 +13,7 @@ if(alternator && alternator % 2){
     </div>
   <% } %>
   <div class="<%=photoClass%> tilePhotoContainer">
-    <a onclick="$('#photoModal-<%=photo.photoid%>').modal();">
+    <a onclick="$('#photoModal-<%=photo.photoid%>').modal();" class="tilePhotoLink">
       <img src="/photos/<%= photo.url %>" class="tilePhoto" />
     </a>
     <figcaption class="projPhotoCaption">

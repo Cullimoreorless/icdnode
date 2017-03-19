@@ -21,6 +21,12 @@ body{
   top: 0;
   z-index: 10000;
 }
+.tilePhotoLink{
+  cursor: pointer;
+}
+.footerContent{
+  padding-top:25px;
+}
 
 /*MODAL OPTIONS */
 .modalPhotoContainer{
@@ -31,7 +37,7 @@ body{
   max-width:100%;
   margin-right:auto;
   margin-left:auto;
-  
+
 }
 
 .tilePhotoContainer{
