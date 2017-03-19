@@ -2,6 +2,10 @@
 <% 
 var photoClass = "col-md-4 col-sm-6 col-xs-12";
 var textClass = "col-md-4 col-sm-6 col-xs-12";
+var alternator;
+if(!alternator){
+  alternator = 0;
+}
 if(alternator && alternator % 2){ 
   photoClass = 'col-sm-6 col-md-4 col-md-push-4 col-sm-push-6 col-xs-12';
   textClass = ' col-md-4 col-md-pull-4 col-sm-6 col-sm-pull-6 col-xs-12';

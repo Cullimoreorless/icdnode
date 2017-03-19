@@ -88,6 +88,27 @@
             </div>
             <div class="row" id="projectPhotos">
               <div class="col-sm-8" style="min-height:1300px;">
+                <% if(project.photos && project.photos.length){  
+                  var bannerPhotos = project.photos.filter(function(pic){
+                    return pic.type == 'Banner';
+                  });
+                  if(bannerPhotos.length){
+                    var bannerPhoto = bannerPhotos[0];
+                    %>
+                    <h3>Banner Photo</h3>
+                    <div class="row">
+                      <div class="col-sm-10">
+                        <img src="/photos/<%=bannerPhoto.url%>" style="max-width:100%;">
+                      </div>
+                      <div class="col-sm-2">
+                        <button class="btn btn-danger btn-xs"
+                          onclick="deletePhoto(<%= bannerPhoto.photoid %>)">Delete</button>
+                      </div>
+                    </div>
+                    <%
+                  }
+                }%>
+                <h3>Tile Photos</h3>
                 <table class="table">
                   <thead>
                     <tr>
@@ -96,10 +117,12 @@
                     </tr>
                   </thead>
                   <tbody id="photoTable">
-                    <% if(project.photos && project.photos.length){ %> 
+                    <% if(project.photos && project.photos.length){ %>
                       <% for(var i = 0; i < project.photos.length; i++){ %> 
                         <% var photo = project.photos[i]; %>
-                        <% include ./phototablerow %>
+                        <% if(photo.type == 'Tile'){ %> 
+                          <% include ./phototablerow %>
+                        <% } %>
                       <% } %>
                     <% } %>
                   </tbody>

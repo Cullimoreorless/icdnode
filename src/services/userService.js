@@ -4,8 +4,8 @@ var sc = simplecrypt({
   salt:'icdnodesaltysalt',
   password:'%oisa47!@7&289icd#!$*'
 });
-var log4js = require('log4js');
-var logger = log4js.getLogger('icdnode');
+// var log4js = require('log4js');
+// var logger = log4js.getLogger('icdnode');
 
 var userService = function(models){
   var saltRounds = 10;
@@ -33,8 +33,8 @@ var userService = function(models){
     getUserByUsername(username).then(function(response){
       var userFromDB = response[0];
       //if(bcrypt.compareSync(password, userFromDB.passwordhash)){
-      logger.info('hashed input: ' + sc.encrypt(password));
-      logger.info('db pwd: ' + userFromDB.passwordhash);
+      // logger.info('hashed input: ' + sc.encrypt(password));
+      // logger.info('db pwd: ' + userFromDB.passwordhash);
       if(sc.encrypt(password) === userFromDB.passwordhash){
         done(null, userFromDB);
       }
