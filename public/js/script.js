@@ -1,5 +1,8 @@
 var elementsToHideOnLoad = [];
 $(function(){
+  $('#mobileMenuButton').click(function(){
+    $('#mobileDropDown').toggle('show');
+  })
   $('.projectTile').hover(function(){
     $(this).find('.photoOverlay').css({
       'background-color': 'rgba(40,40,40,0.3)',
@@ -108,3 +111,11 @@ var stickObjsToTop = function(){
   });
 };
 
+
+function makeHeightOfParent(childSelector, parentSelector){
+  $(childSelector).each(function(index, elem){
+    var $this = $(elem);
+    $this.css('height', '0px');
+    $this.css('height', $this.parents(parentSelector).css('height'));
+  })
+}

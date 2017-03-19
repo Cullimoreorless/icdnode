@@ -1,3 +1,6 @@
+body{
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
 #top-menu{
   width:100%;
   text-align:right;
@@ -166,4 +169,39 @@ ul.nav-menu li a{
 .nav-hover-right{
   right:0px;
   border-width: 5px 0px 5px 5px; 
+}
+
+#mobileMenuContainer{
+  height:80px;
+  text-align: center;
+  
+}
+#mobileMenu{
+  display:table-cell;
+  text-align: center;
+  vertical-align: middle;
+  height: 80px;
+  width:100%;
+}
+#mobileMenuButton{
+  border: solid darkslategrey 1px;
+  border-radius: 5px;
+  padding: 8px;
+  min-height:45px;
+  min-width:45px;
+}
+#mobileDropDown{
+  display:none;
+  position:absolute;
+  right:0px;
+  z-index: 100;
+}
+.mobileMenuLink{
+  min-width:300px;
+  min-height:50px;
+  border:solid darkslategrey 1px;
+  display:block;
+  background-color: rgba(250,250,250, 0.9);
+  padding:10px;
+  font-size: 14pt;  
 }

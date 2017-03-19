@@ -1,13 +1,22 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-3 col-xs-3">
       <div id="logo-container">
         <a href="/"><img src="/photos/<%= conf.logourl %>" width="150" height="110" alt="<%= conf.logoalttext %>"/></a>
       </div>
     </div>
-    <div class="col-sm-9">
+    <div class="col-sm-9 hidden-xs">
       <div id="top-menu" class="nav-menu-container">
         <ul class="nav-menu ">
+          <li>
+            <a href="/contact">
+              <div class="nav-hover-container">
+                <div class="nav-hover-left"></div>
+                <div class="nav-hover-right"></div>
+                <div class="nav-link">Contact</div>
+              </div>
+            </a>
+          </li>
           <li>
             <a href="/resume">
               <div class="nav-hover-container">
@@ -18,6 +27,18 @@
             </a>
           </li>
         </ul>
+      </div>
+    </div>
+    
+    <div id="mobileMenuContainer" class="col-xs-offset-7 col-xs-2 hidden-md hidden-sm hidden-lg mobileMenuContainer">
+      <div id="mobileMenu">
+        <button id="mobileMenuButton" class="btn btn-default">
+          <i class="fa fa-bars"></i>
+        </button>
+        <nav id="mobileDropDown">
+          <a class="mobileMenuLink" href="/contact">Contact</a>
+          <a class="mobileMenuLink" href="/resume">Resume</a>
+        </nav>
       </div>
     </div>
   </div>
