@@ -186,6 +186,7 @@ ul.nav-menu li a{
   -ms-transform: skewX(-20deg);
   -webkit-transform: skewX(-20deg);
   transform: skewX(-20deg); 
+  transition: all 0.3s;
 }
 .nav-hover-left{
   left:0px;
@@ -193,7 +194,7 @@ ul.nav-menu li a{
 }
 
 .nav-hover-right{
-  right:0px;
+  right:80px;
   border-width: 5px 0px 5px 5px; 
 }
 .footerContent{
