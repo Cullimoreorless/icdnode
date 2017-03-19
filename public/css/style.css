@@ -12,7 +12,7 @@ body{
   z-index: 10000;
 }
 .tilePhotoContainer{
-  padding:8px 8px 30px 8px;
+  padding:8px 8px 60px 8px;
   background-color: rgba(40,40,40,0.4);
   min-height: 250px;
 }
@@ -27,6 +27,17 @@ body{
   margin-left:auto;
   margin-right:auto;
   display:block;
+}
+.projPhotoDescription{
+  padding:15px;
+}
+.projPhotoCaption{
+  font-style:italic;
+  text-align: center;
+  padding: 5px 15px;
+}
+.photo-title{
+  font-weight: bold;
 }
 /*classes for photo background slideshow*/
 .bgPhotos, .photoCaptions{
@@ -120,6 +131,8 @@ body{
   max-width: 550px;
 }
 
+
+/*Menu Styling*/
 a:hover{
   text-decoration: none !important;
 }
