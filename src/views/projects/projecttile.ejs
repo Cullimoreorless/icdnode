@@ -2,7 +2,7 @@
     onclick="window.location = '/projects/<%=project.url %>'">
   
   <% if(project.photos && project.photos.length){ %>
-    <div style="max-height:250px;overflow-y:hidden;">
+    <div style="max-height:250px;overflow-y:hidden;position:relative;">
       <div class="bgPhotos slide-show" id="projectphotos<%=project.projectid %>">
         <% project.photos.forEach(function(photo){ %>
           <img  class="projPhoto slide" src="/photos/<%= photo.url %>" style="max-width:100%;" />
