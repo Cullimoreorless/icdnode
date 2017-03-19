@@ -79,8 +79,8 @@ var projectService = function(models){
         callback(null, true);
       }).error(function(error){
         callback(error, false);
-      })
-  }
+      });
+  };
 
   return {
     getProjectsList: getProjectsList,

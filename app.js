@@ -106,6 +106,10 @@ if(environment === 'dev'){
             description: 'Kamino Traveler is a site that fell apart due to poorly attending meetings by me',
             type:'Tile',
             order:2
+      },{
+          title:'Banner',
+          url:'testbannerphoto.png',
+          type:'Banner'
       }]
     }, function(err, projecturl){
       console.log(err || 'created' + projecturl);

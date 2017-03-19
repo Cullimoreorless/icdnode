@@ -1,7 +1,18 @@
 
 <tr id="photoid-<%= photo.photoid %>">
   <td>
-    <% include ./../projects/phototile %>
+    <div class="row">
+      <div class="col-sm-6 col-xs-12">
+        <img src="/photos/<%= photo.url %>" class="tilePhoto" />
+        <figcaption class="projPhotoCaption">
+          <span class="photo-title"><%= photo.title %> </span> 
+          <%= photo.caption %>
+        </figcaption>
+      </div>
+      <div class="col-sm-6 col-xs-12">
+        <%= photo.description %>
+      </div>
+    </div>
   </td>
   <td>
     <button class="btn btn-primary btn-xs" 

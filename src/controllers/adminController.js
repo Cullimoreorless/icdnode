@@ -89,11 +89,12 @@ var adminController = function(siteConfigService, projectService, photoService){
       photoToSave.url = req.body.filename;
     }
     photoService.savePhoto(photoToSave, function(error, retPhoto){
-      ejs.renderFile(__dirname + '/../views/admin/phototablerow.ejs', 
-        {photo: retPhoto},
+      var pathToTemplate = retPhoto.type === 'Tile' ? '/../views/admin/phototablerow.ejs' : '/../views/admin/bannerphoto.ejs'
+      ejs.renderFile(__dirname + pathToTemplate, 
+        {photo: retPhoto, bannerPhoto: retPhoto},
         function(error, responseString){
           if(responseString){
-            res.send({html:responseString, photoid: retPhoto.photoid});
+            res.send({html:responseString, photoid: retPhoto.photoid, phototype: retPhoto.type});
           }
         });
     });

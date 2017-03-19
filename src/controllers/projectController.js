@@ -27,6 +27,6 @@ var projectController = function(projectService){
   return {
     getProjectPage: getProjectPage
   };
-}
+};
 
 module.exports = projectController;

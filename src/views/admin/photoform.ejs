@@ -44,14 +44,24 @@
       success:function(data, success){
         console.log('data: ' + data + ' success: ' + success);
         var dataJson = JSON.parse(data);
-        var existingPhoto = $('#photoid-' + dataJson.photoid);
-        if(existingPhoto.length){
-          //if the photo already existed and is just being updated...
-          existingPhoto.replaceWith(dataJson.html);
+        if(dataJson.phototype === 'Tile'){
+          var existingPhoto = $('#photoid-' + dataJson.photoid);
+          if(existingPhoto.length){
+            //if the photo already existed and is just being updated...
+            existingPhoto.replaceWith(dataJson.html);
+          }
+          else{
+            //the photo is new, add to table
+            $('#photoTable').append(dataJson.html);
+          }
         }
-        else{
-          //the photo is new, add to table
-          $('#photoTable').append(dataJson.html);
+        else if(dataJson.phototype === 'Banner'){
+          var existingBanner = $('#bannerPhoto');
+          if(existingBanner.length){
+            existingBanner.replaceWith(dataJson.html);
+          } else{
+            $('#bannerPhotoContainer').html(dataJson.html);
+          }
         }
         cancelEdit();
       },
