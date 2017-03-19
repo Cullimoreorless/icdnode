@@ -22,15 +22,26 @@ body{
   z-index: 10000;
 }
 
+/*MODAL OPTIONS */
+.modalPhotoContainer{
+  width:100%;
+  text-align:center;
+}
+.modalPhoto{
+  max-width:100%;
+  margin-right:auto;
+  margin-left:auto;
+  
+}
 
 .tilePhotoContainer{
   padding:8px 8px 60px 8px;
-  background-color: rgba(40,40,40,0.4);
+  /*background-color: rgba(40,40,40,0.4);*/
   min-height: 250px;
 }
 .tilePhotoSpacer{
   padding:8px;
-  background-color: rgba(40,40,40,0.4);
+  /*background-color: rgba(40,40,40,0.4);*/
   height:100%;
 }
 .tilePhoto{
@@ -89,7 +100,7 @@ body{
   max-height:250px;
   vertical-align: bottom;
   color:rgba(250,250,250, 0.9);
-  background-color: rgba(40,40,40,0.5);
+  background-color: rgba(40,40,40,0.4);
   transition: all 0.4s;
 }
 .projectTitle{
@@ -117,7 +128,7 @@ body{
   vertical-align: bottom;
   display:table-cell;
   z-index:500;
-  background-color:rgba(40,40,40,0.7);
+  background-color:rgba(40,40,40,0.6);
   color:rgba(250,250,250, 0.9);
 }
 .bannerTitle{

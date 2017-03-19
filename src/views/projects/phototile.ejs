@@ -13,13 +13,15 @@ if(alternator && alternator % 2){
     </div>
   <% } %>
   <div class="<%=photoClass%> tilePhotoContainer">
-    <img src="/photos/<%= photo.url %>" class="tilePhoto" />
+    <a onclick="$('#photoModal-<%=photo.photoid%>').modal();">
+      <img src="/photos/<%= photo.url %>" class="tilePhoto" />
+    </a>
     <figcaption class="projPhotoCaption">
-      <span class="photo-title"><%= photo.title %> </span> 
       <%= photo.caption %>
     </figcaption>
   </div>
   <div class="<%=textClass%> projPhotoDescription">
+    <div class="photo-title"><%= photo.title %> </div> 
     <%= photo.description %>
   </div>
 
@@ -28,3 +30,24 @@ if(alternator && alternator % 2){
     </div>
   <% } %>
 </div> 
+<div class="modal fade" id="photoModal-<%= photo.photoid %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><%=photo.title%></h4>
+      </div>
+      <div class="modal-body">
+        <div class="modalPhotoContainer">
+          <img src="/photos/<%=photo.url%>" class="modalPhoto">
+        </div>
+        <div class="modalPhotoCaption">
+          <%=photo.caption%>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
