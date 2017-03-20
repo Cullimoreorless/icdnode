@@ -1,5 +1,5 @@
 body{
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Raleway", "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 #top-menu{
   width:100%;
@@ -184,22 +184,22 @@ ul.nav-menu li a{
   color:black;
 }
 .nav-link{
-  width:150px;
-  height:80px;
+  width:120px;
+  height:62px;
   display:table-cell;
   text-align:center;
-  vertical-align:middle;
-  font-size:18px;
+  vertical-align:bottom;
+  font-size:18pt;
   margin: auto;
 }
 .nav-hover-container{
   position:relative;
-  min-width:150px;
+  min-width:120px;
   text-align: center;
 }
 .nav-hover-left, .nav-hover-right{
   position:absolute;
-  height:50px;
+  height:40px;
   top:15px;
   min-width:2px;
   border:1px solid black;

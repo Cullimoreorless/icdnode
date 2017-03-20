@@ -70,13 +70,26 @@ var siteConfigService = require('./src/services/siteConfigService')(models);
 var projectService = require('./src/services/projectService')(models);
 var photoService = require('./src/services/photoService')(models);
 
+var menuitems = [
+  {url:'/contact', text:'contact'},
+  {url:'/resume', text:'resume'}
+];
 
 app.use(function(req, res, next){
   siteConfigService.getSiteConfig(function(error, response){
     console.log(response);
     if(response){
+      var isUserLoggedIn = (req.user ? true : false);
+      var menuitems = [
+        {url:'/contact', text:'contact'},
+        {url:'/resume', text:'resume'}
+      ];
+      if(isUserLoggedIn)
+        menuitems.push({url:'/admin/portal',text:'admin'});
       res.locals = {
-        conf: response
+        conf: response,
+        loggedin: isUserLoggedIn,
+        menuitems: menuitems
       };
     }
     next();
