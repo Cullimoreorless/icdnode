@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>ICDesign - Contact</title>
+    <link rel="shortcut icon" href="/ICDFavicon.png" type="image/x-icon">
+    <!--bower:css-->
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
+    <!--endbower-->
+    <!--bower:js-->
+    <script src="/lib/jquery/dist/jquery.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <!--endbower-->
+    <!--inject:css-->
+    <link rel="stylesheet" href="/css/style.css">
+    <!--endinject-->
+    <!--inject:js-->
+    <script src="/js/script.js"></script>
+    <!--endinject-->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <header role="banner">
+      <% include common/header %>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <% if(conf.resumeurl){ %>
+            <iframe id="resumeIFrame" src="" style="width:718px; height:700px;margin-left:auto;margin-right:auto;" frameborder="0"></iframe>
+            <script type="text/javascript">
+              var url = 'http://docs.google.com/gview?url=http://'+ document.domain +'/photos/<%=conf.resumeurl%>&embedded=true';
+              $('#resumeIFrame').attr('src', url);
+            </script>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <% include common/footer %>
+    </footer>
+  </body>
+</html>

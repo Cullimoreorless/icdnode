@@ -14,7 +14,13 @@ body{
   padding:25px;
   font-size:14pt;
 }
-
+.contact-item{
+  font-size:16pt;
+  display:block;
+  min-width:200px;
+  text-align: center;
+  padding:5px;
+}
 .sticky-top.stick{
   margin-top: 0 !important;
   position: fixed !important;

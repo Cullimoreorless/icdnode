@@ -92,7 +92,11 @@ if(environment === 'dev'){
       logoalttext:'Ian C Design',
       introtext:'This is the product design portfolio for Ian Cullimore',
       sitetitle:'Ian C Design',
-      contactemail:'me@thisdomain.com'
+      contactemail:'me@thisdomain.com',
+      personalname: 'Ian Cullimore',
+      personalblurb:'Ian is a designer',
+      resumeurl:'Cheesevangelists.pdf',
+      contactphoto:'Screen-Shot-2015-05-31-at-121142-PM.png'
     });
     projectService.saveProject({
       name: 'Exciting Project',
@@ -196,6 +200,10 @@ app.route('/contact')
   .get(function(req, res){
     res.render('contact');
   });
+
+app.get('/resume', function(req, res){
+  res.render('resume');
+});
 
 app.listen(port, function(err){
   console.log('running on port' + port);
