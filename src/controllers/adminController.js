@@ -9,13 +9,18 @@ var adminController = function(siteConfigService, projectService, photoService){
   };
 
   var saveSiteConfig = function(req, res){
+
     siteConfigService.saveSiteConfig(
       {
-        logourl: req.body.filename,
+        logourl: req.body.logourl,
         logoalttext: req.body.logoalttext,
         sitetitle: req.body.sitetitle,
         introtext: req.body.introtext,
-        contactemail: req.body.contactemail
+        contactemail: req.body.contactemail,
+        contactphoto: req.body.contactphoto,
+        personalblurb:req.body.personalblurb,
+        personalname: req.body.personalname,
+        resumeurl: req.body.resumeurl
       },
       function(err, response){
         console.log(response);

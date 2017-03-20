@@ -251,3 +251,15 @@ ul.nav-menu li a{
   padding:10px;
   font-size: 14pt;  
 }
+
+#contactPage{
+  width:100%;
+}
+#contactPhoto{
+  float:left;
+  max-width:75%;
+  padding:15px;
+}
+#contactBlurb{
+  padding:15px;
+}

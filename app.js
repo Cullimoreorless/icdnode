@@ -22,15 +22,22 @@ var storage = multer.diskStorage({
     cb(null, photoDirectory);
   },
   filename: function (req, file, cb) {
-    console.log(file);
+    if(!req.body.files){
+      req.body.files =[];
+      req.body.fileData = {}
+    }
+    req.body.files.push(file.fieldname);
     var firstPart = file.originalname.substring(0, file.originalname.lastIndexOf('.'));
     var extension = file.originalname.substring(file.originalname.lastIndexOf('.'), file.originalname.length);
     var parsedFileName = firstPart.replace(/( )/g,'-').replace(/[^A-Za-z0-9-]/g, '');
+    
     req.body.filename = parsedFileName + extension;
+    req.body[file.fieldname] = parsedFileName + extension;
     cb(null, parsedFileName + extension);
   }
 });
 var photoUpload = multer({storage: storage});
+var multiUpload = multer({storage:storage});
 
 
 var db = new Sequelize(config.dbname, config.dbuser, config.dbpw, {
@@ -159,7 +166,7 @@ app.set('views','./src/views');
 app.set('view engine', 'ejs');
 
 var adminController = require('./src/controllers/adminController')(siteConfigService, projectService, photoService);
-var adminRouter = require('./src/routes/adminRoutes')(adminController, photoUpload);
+var adminRouter = require('./src/routes/adminRoutes')(adminController, photoUpload, multiUpload);
 app.use('/admin', adminRouter);
 
 var projectController = require('./src/controllers/projectController')(projectService);
@@ -184,6 +191,11 @@ app.route('/signIn')
     }), function(req, res){
       res.redirect('/admin/portal');
     });
+
+app.route('/contact')
+  .get(function(req, res){
+    res.render('contact');
+  });
 
 app.listen(port, function(err){
   console.log('running on port' + port);

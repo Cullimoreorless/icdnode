@@ -7,7 +7,11 @@ var siteConfigFunction = function(db){
     logoalttext: Sequelize.STRING,
     introtext: Sequelize.STRING(1000),
     contactemail: Sequelize.STRING,
-    sitetitle: Sequelize.STRING
+    sitetitle: Sequelize.STRING,
+    personalname:Sequelize.STRING,
+    personalblurb:Sequelize.STRING(1000),
+    contactphoto:Sequelize.STRING,
+    resumeurl:Sequelize.STRING
   });
 
   return SiteConfiguration;

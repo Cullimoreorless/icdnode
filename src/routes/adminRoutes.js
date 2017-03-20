@@ -3,7 +3,7 @@ var adminRouter = express.Router();
 var passport = require('passport');
 var ejs = require('ejs');
 
-var router = function(adminController, photoUpload){
+var router = function(adminController, photoUpload, multiUpload){
   adminRouter.use(function(req, res, next){
     if(!req.user){
       res.redirect('/login');
@@ -15,7 +15,11 @@ var router = function(adminController, photoUpload){
     .get(adminController.getSiteConfigPage);
 
   adminRouter.post('/siteconfig', 
-    photoUpload.single('logophoto'),
+    multiUpload.fields([
+      {name:'resumeurl', maxCount:1 },
+      {name:'contactphoto', maxCount:1},
+      {name:'logourl', maxCount:1} 
+    ]),
     adminController.saveSiteConfig);
 
   adminRouter.route('/projects')
