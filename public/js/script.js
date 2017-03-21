@@ -28,13 +28,13 @@ $(function(){
   });
   $('.nav-hover-container').hover(function () {
       $(this).children('.nav-hover-right').css({
-        "width": "20px",
-        "right": "88px",
+        "width": "17px",
+        "right": "64px",
         "left": "auto",
         "opacity": "0.3"
       });
       $(this).children('.nav-hover-left').css({
-        "width": "20px",
+        "width": "17px",
         "left": "18px",
         "right": "auto",
         "opacity": "0.3"
@@ -42,7 +42,7 @@ $(function(){
     }, function () {
       $(this).children('.nav-hover-right').css({
         "width": "0px",
-        "right": "80px",
+        "right": "50px",
         "left":"auto",
         "opacity": "0"
       });
