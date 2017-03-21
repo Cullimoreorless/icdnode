@@ -1,16 +1,30 @@
 var elementsToHideOnLoad = [];
 $(function(){
+
+
   $('#mobileMenuButton').click(function(){
     $('#mobileDropDown').toggle('show');
   })
   $('.projectTile').hover(function(){
     $(this).find('.photoOverlay').css({
-      'background-color': 'rgba(40,40,40,0.3)',
+      'background-color': 'rgba(40,40,40,0.4)',
       'color':'rgba(230,230,230, 0.95)'});
+    $(this).find('.projectOverlayText').css({
+      "height":"75px"
+    });
+    $(this).find('.photoCaptionContainer').first().css({
+      "height":"60px"
+    })
   }, function(){
     $(this).find('.photoOverlay').css({
-      'background-color': 'rgba(40,40,40,0.7)',
+      'background-color': 'rgba(40,40,40,0.1)',
       'color':'rgba(250,250,250, 0.9)'});
+    $(this).find('.projectOverlayText').css({
+      "height":'0px'
+    });
+    $(this).find('.photoCaptionContainer').first().css({
+      "height":"0px"
+    });
   });
   $('.nav-hover-container').hover(function () {
       $(this).children('.nav-hover-right').css({

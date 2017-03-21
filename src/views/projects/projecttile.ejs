@@ -10,18 +10,22 @@
       </div>
       <div class="photoCaptions slide-show" id="projectcaptions<%=project.projectid %>">
         <% project.photos.forEach(function(photo){ %>
-          <div class="slide photoCaptionContainer">
+          <div class="slide photoCaptionContainer" style="height:0px;">
             <%= photo.title %> -
             <%= photo.caption %>
           </div>
         <% }) %>
       </div>
       <div class="photoOverlay">
-        <div class="projectTitle">
-          <%= project.name %>
+        <div class="projectOverlayText">
+          <div class="projectTitle">
+            <%= project.name %>
+          </div>
+          <div class="projectTeaser">
+            <%= project.teaser %>
+          </div>
         </div>
-        <%= project.teaser %>
-        <div class="photoCaptionContainer">
+        <div class="">
         </div>
       </div>
     </div>
