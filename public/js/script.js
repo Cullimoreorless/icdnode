@@ -12,7 +12,7 @@ $(function(){
     $(this).find('.projectOverlayText').css({
       "height":"75px"
     });
-    $(this).find('.photoCaptionContainer').first().css({
+    $(this).find('.photoCaptionContainer').css({
       "height":"60px"
     })
   }, function(){
@@ -22,7 +22,7 @@ $(function(){
     $(this).find('.projectOverlayText').css({
       "height":'0px'
     });
-    $(this).find('.photoCaptionContainer').first().css({
+    $(this).find('.photoCaptionContainer').css({
       "height":"0px"
     });
   });
