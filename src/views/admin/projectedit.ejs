@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Edit Project</title>
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700" rel="stylesheet">
     <link rel="shortcut icon" href="/ICDFavicon.png" type="image/x-icon">
     <!--bower:css-->
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
@@ -100,6 +100,26 @@
                     <% }
                   }%>
                 </div>
+                <h3>Page Photos</h3>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Photos</th>
+                      <th>Options</th>
+                    </tr>
+                  </thead>
+                  <tbody id="photoTablePage">
+                    <% if(project.photos && project.photos.length){ %>
+                      <% for(var i = 0; i < project.photos.length; i++){ %> 
+                        <% var photo = project.photos[i]; %>
+                        <% if(photo.type == 'Page'){ %> 
+                          <% var alternator = i + 1; %>
+                          <% include ./phototablerow %>
+                        <% } %>
+                      <% } %>
+                    <% } %>
+                  </tbody>
+                </table>
                 <h3>Tile Photos</h3>
                 <table class="table">
                   <thead>

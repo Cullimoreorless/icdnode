@@ -45,7 +45,7 @@
       success:function(data, success){
         console.log('data: ' + data + ' success: ' + success);
         var dataJson = JSON.parse(data);
-        if(dataJson.phototype === 'Tile'){
+        if(dataJson.phototype === 'Tile' || dataJson.phototype === 'Page'){
           var existingPhoto = $('#photoid-' + dataJson.photoid);
           if(existingPhoto.length){
             //if the photo already existed and is just being updated...
@@ -53,7 +53,8 @@
           }
           else{
             //the photo is new, add to table
-            $('#photoTable').append(dataJson.html);
+            var idToAppend = (dataJson.phototype ==='Page' ? '#photoTablePage' : '#photoTable');
+            $(idToAppend).append(dataJson.html);
           }
         }
         else if(dataJson.phototype === 'Banner'){

@@ -57,19 +57,17 @@
             <% } %>
             <%= project.description %>
           </div>
-          <% if(tilePhotos && tilePhotos.length){ %>
-            <% tilePhotos.forEach(function(photo, index){ %>
-              <% var alternator = index; %>
-              <% include ./phototile %>
-            <% }) %>
-          <% } %>
-          <!--<div class="row tilePhotoRow" style="height:25px;">
-             <div class="tilePhotoSpacer col-md-4 col-sm-6 col-xs-12">
-             </div>
-             <div class="tilePhotoSpacer col-md-offset-4 col-md-4 col-sm-6 col-xs-12">
-             </div>
-          </div>-->
         </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <% if(tilePhotos && tilePhotos.length){ %>
+          <% tilePhotos.forEach(function(photo, index){ %>
+            <% var alternator = index; %>
+            <% include ./phototile %>
+          <% }) %>
+        <% } %>
       </div>
     </div>
     <script type="text/javascript">

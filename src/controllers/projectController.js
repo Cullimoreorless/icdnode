@@ -21,6 +21,7 @@ var projectController = function(projectService){
           res.render('projects/projectdetail',{
             project:project, 
             tilePhotos: tilePhotos,
+            pagePhotos: pagePhotos,
             bannerPhoto: bannerPhoto
           });
         }
