@@ -8,7 +8,7 @@ module.exports = function(db){
     caption: Sequelize.STRING(100),
     title: Sequelize.STRING(60),
     description: Sequelize.STRING(1000),
-    type: Sequelize.ENUM('Banner','Tile'),
+    type: Sequelize.ENUM('Banner','Tile','Page'),
     order: Sequelize.INTEGER
   });
   return Photo;

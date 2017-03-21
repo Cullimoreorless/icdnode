@@ -5,10 +5,14 @@ var projectController = function(projectService){
       function(err, project){
         if(project){
           var tilePhotos = [];
+          var pagePhotos = [];
           var bannerPhoto = null;
           project.photos.map(function(photo){
             if(photo.type === 'Tile'){
               tilePhotos.push(photo);
+            }
+            else if(photo.type === 'Page'){
+              pagePhotos.push(photo);
             }
             else if(photo.type ==='Banner'){
               bannerPhoto = photo;
