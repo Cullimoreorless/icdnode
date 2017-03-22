@@ -35,44 +35,65 @@
         </div>
         <div class="col-sm-9">
           <form name="siteconfigform" enctype="multipart/form-data" action="/admin/siteconfig" method="post">
-            <div class='form-group'>
-              <label>Site Title</label>
-              <input class='form-control' type='text' placeholder='Site title' value='<%= conf.sitetitle %>' name='sitetitle'>
+            <div style="width:47%;float:left;">
+              <div class='form-group'>
+                <label>Site Title</label>
+                <input class='form-control' type='text' placeholder='Site title' value='<%= conf.sitetitle %>' name='sitetitle'>
+              </div>
+              <div class='form-group'>
+                <label>Site Intro Text  </label>
+                <textarea class="form-control" name="introtext" ><%= conf.introtext %></textarea>
+              </div>
+              <div class='form-group'>
+                <label>Logo</label>
+                <input type="file" name="logophoto">
+              </div>
+              <div class='form-group'>
+                <label>Logo Alt Text</label>
+                <input class='form-control' type='text' placeholder='Logo Alt Text' value='<%= conf.logoalttext %>' name='logoalttext'>
+              </div>
+              <div class='form-group'>
+                <label>Owner Name</label>
+                <input class='form-control' type='text' placeholder='Name' value='<%=conf.personalname %>' name='personalname'>
+              </div>
+              <div class='form-group'>
+                <label>Bio</label>
+                <textarea class="form-control" name="personalblurb" ><%= conf.personalblurb %></textarea>
+              </div>
+              <div class='form-group'>
+                <label>Contact Photo</label>
+                <input class='form-control' type='file' name='contactphoto'>
+              </div>
             </div>
-            <div class='form-group'>
-              <label>Site Intro Text  </label>
-              <textarea class="form-control" name="introtext" ><%= conf.introtext %></textarea>
+            <div style="width:47%;float:right;">
+              <div class='form-group'>
+                <label>Resume</label>
+                <input class='form-control' type='file' name='resumeurl'>
+              </div>
+              <div class='form-group'>
+                <label>Contact Email</label>
+                <input class='form-control' type='Email' placeholder='Email' value='<%= conf.contactemail %>' name='contactemail'>
+              </div>
+              <div class='form-group'>
+                <label>LinkedIn Url</label>
+                <input class='form-control' type='text' placeholder='placeholder' value='<%= conf.linkedinurl %>' name='linkedinurl'>
+              </div>  
+              <div class='form-group'>
+                <label>Facebook Url</label>
+                <input class='form-control' type='text' placeholder='placeholder' value='<%= conf.facebookurl %>' name='facebookurl'>
+              </div>  
+              <div class='form-group'>
+                <label>Instagram Url</label>
+                <input class='form-control' type='text' placeholder='placeholder' value='<%= conf.instagramurl %>' name='instagramurl'>
+              </div>  
+              <div class='form-group'>
+                <label>Twitter Url</label>
+                <input class='form-control' type='text' placeholder='placeholder' value='<%= conf.twitterurl %>' name='twitterurl'>
+              </div> 
+              <input class="btn btn-primary" type="submit" value="Save">
+              
             </div>
-            <div class='form-group'>
-              <label>Logo</label>
-              <input type="file" name="logophoto">
-            </div>
-            <div class='form-group'>
-              <label>Logo Alt Text</label>
-              <input class='form-control' type='text' placeholder='Logo Alt Text' value='<%= conf.logoalttext %>' name='logoalttext'>
-            </div>
-            <div class='form-group'>
-              <label>Owner Name</label>
-              <input class='form-control' type='text' placeholder='Name' value='<%=conf.personalname %>' name='personalname'>
-            </div>
-            <div class='form-group'>
-              <label>Bio</label>
-              <textarea class="form-control" name="personalblurb" ><%= conf.personalblurb %></textarea>
-            </div>
-            <div class='form-group'>
-              <label>Contact Photo</label>
-              <input class='form-control' type='file' name='contactphoto'>
-            </div>
-            <div class='form-group'>
-              <label>Resume</label>
-              <input class='form-control' type='file' name='resumeurl'>
-            </div>
-            <div class='form-group'>
-              <label>Contact Email</label>
-              <input class='form-control' type='Email' placeholder='Email' value='<%= conf.contactemail %>' name='contactemail'>
-            </div>
-            <input class="btn btn-primary" type="submit" value="Save">
-          </form>
+          </form>  
         </div>
       </div>
     </div>

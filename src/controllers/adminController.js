@@ -20,7 +20,11 @@ var adminController = function(siteConfigService, projectService, photoService){
         contactphoto: req.body.contactphoto,
         personalblurb:req.body.personalblurb,
         personalname: req.body.personalname,
-        resumeurl: req.body.resumeurl
+        resumeurl: req.body.resumeurl,
+        linkedinurl: req.body.linkedinurl,
+        instagramurl: req.body.instagramurl,
+        facebookurl: req.body.facebookurl,
+        twitterurl: req.body.twitterurl
       },
       function(err, response){
         console.log(response);

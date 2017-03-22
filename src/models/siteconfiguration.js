@@ -11,7 +11,11 @@ var siteConfigFunction = function(db){
     personalname:Sequelize.STRING,
     personalblurb:Sequelize.STRING(1000),
     contactphoto:Sequelize.STRING,
-    resumeurl:Sequelize.STRING
+    resumeurl:Sequelize.STRING,
+    linkedinurl: Sequelize.STRING,
+    facebookurl:Sequelize.STRING,
+    instagramurl:Sequelize.STRING,
+    twitterurl: Sequelize.STRING
   });
 
   return SiteConfiguration;

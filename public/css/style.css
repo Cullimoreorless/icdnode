@@ -225,7 +225,10 @@ ul.nav-menu li a{
   text-align:right;
   padding:25px;
 }
-
+.socialButtons{
+  font-size: 18pt;
+  padding-top:22px;
+}
 #mobileMenuContainer{
   height:80px;
   text-align: center;
