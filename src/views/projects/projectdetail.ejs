@@ -48,28 +48,20 @@
           </div>
         </div>
       <% } %>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="projectDescription">
-            <% if(!bannerPhoto){ %>
-              <h3><%= project.name %></h3>
-            <% } %>
-            <%= project.description %>
-          </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="projectDescription">
+          <% if(!bannerPhoto){ %>
+            <h3><%= project.name %></h3>
+          <% } %>
+          <%= project.description %>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <% if(tilePhotos && tilePhotos.length){ %>
-          <% tilePhotos.forEach(function(photo, index){ %>
-            <% var alternator = index; %>
-            <% include ./phototile %>
-          <% }) %>
-        <% } %>
-      </div>
-    </div>
+    <% pagePhotos.forEach(function(photo){ %>
+      <% include photopg %>
+    <% }) %>
+    
     <script type="text/javascript">
       function resizeNecessaryDivs(){
         makeHeightOfParent('.tilePhotoContainer', '.tilePhotoRow');

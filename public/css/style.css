@@ -197,6 +197,9 @@ ul.nav-menu li a{
   min-width:120px;
   text-align: center;
 }
+.pagePhoto{
+  max-height:1200px;
+}
 .nav-hover-left, .nav-hover-right{
   position:absolute;
   height:40px;
