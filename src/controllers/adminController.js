@@ -98,7 +98,7 @@ var adminController = function(siteConfigService, projectService, photoService){
       photoToSave.url = req.body.filename;
     }
     photoService.savePhoto(photoToSave, function(error, retPhoto){
-      var pathToTemplate = retPhoto.type === 'Tile' || retPhoto.type === 'Page' ? '/../views/admin/phototablerow.ejs' : '/../views/admin/bannerphoto.ejs'
+      var pathToTemplate = retPhoto.type === 'Tile' || retPhoto.type === 'Page' ? '/../views/admin/phototablerow.ejs' : '/../views/admin/bannerphoto.ejs';
       ejs.renderFile(__dirname + pathToTemplate, 
         {photo: retPhoto, bannerPhoto: retPhoto},
         function(error, responseString){

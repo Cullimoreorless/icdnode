@@ -24,7 +24,7 @@ var storage = multer.diskStorage({
   filename: function (req, file, cb) {
     if(!req.body.files){
       req.body.files =[];
-      req.body.fileData = {}
+      req.body.fileData = {};
     }
     req.body.files.push(file.fieldname);
     var firstPart = file.originalname.substring(0, file.originalname.lastIndexOf('.'));
