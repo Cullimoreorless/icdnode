@@ -88,10 +88,11 @@ app.use(function(req, res, next){
         {iconname:'linkedin', url: response.linkedinurl },
         {iconname:'instagram', url: response.instagramurl },
         {iconname:'twitter', url: response.twitterurl },
-        {iconname:'facebook', url: response.facebookurl },
-      ]
-      if(isUserLoggedIn)
+        {iconname:'facebook', url: response.facebookurl }
+      ];
+      if(isUserLoggedIn){
         menuitems.push({url:'/admin/portal',text:'admin'});
+      }
       res.locals = {
         conf: response,
         loggedin: isUserLoggedIn,
