@@ -163,7 +163,18 @@ body{
   text-align: left;
   font-style: italic;
   font-size: 14pt;
-
+  margin-top:8px;
+}
+.projectName{
+  font-size: 24pt;
+}
+.projectTeaserArea{
+  display:inline-block;
+  text-align: left;
+}
+.projectByline{
+  font-style: italic;
+  margin-top:-7px;  
 }
 .nav-bar{
   z-index:25;

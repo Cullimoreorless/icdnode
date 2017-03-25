@@ -37,10 +37,6 @@
               <div class="row">
                 <div class="col-sm-12" style="height:130px;">
                   <div class="bannerTitle">
-                    <div>
-                      <h2><%= project.name %></h2>
-                      <%=project.teaser %>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -50,10 +46,15 @@
       <% } %>
     <div class="row">
       <div class="col-sm-12">
+          <div class="projectTeaserArea">        
+            <div class="projectName">
+              <%= project.name %>
+            </div>
+            <div class="projectByline">
+              <%=project.teaser %>
+            </div>
+          </div>
         <div class="projectDescription">
-          <% if(!bannerPhoto){ %>
-            <h3><%= project.name %></h3>
-          <% } %>
           <%= project.description %>
         </div>
       </div>
