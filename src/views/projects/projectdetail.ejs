@@ -59,10 +59,11 @@
         </div>
       </div>
     </div>
+    <div class="sticky-anchor">
     <% pagePhotos.forEach(function(photo){ %>
-      <% include photopg %>
+      <% include photopage %>
     <% }) %>
-    
+    </div>
     <script type="text/javascript">
       function resizeNecessaryDivs(){
         makeHeightOfParent('.tilePhotoContainer', '.tilePhotoRow');

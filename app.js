@@ -156,8 +156,22 @@ if(environment === 'dev'){
             url: 'Screen-Shot-2013-09-06-at-81536-AM.png',
             caption:'Look a map',
             description: 'This is a map',
-            type:'Tile',
+            type:'Page',
             order:1
+      },{
+            title:'Little Spoon',
+            url: 'LittleSpoon.png',
+            caption:'Little Spoon Sketch Comedy',
+            description: 'Aw, how cute',
+            type:'Page',
+            order:2
+      },{
+            title:'KT Logo',
+            url: 'KTLogoSample.png',
+            caption:'This is a logo for a completely different website',
+            description: 'Kamino Traveler is a site that fell apart due to poorly attending meetings by me',
+            type:'Page',
+            order:3
       },{
             title:'Stand up shot',
             url: 'Screen-Shot-2015-06-12-at-100210-AM.png',
