@@ -104,7 +104,7 @@ app.use(function(req, res, next){
   });
 });
 
-if(environment === 'dev'){
+if(false){
   db.sync({force:true}).then(function(){
     console.log('db synced');
     //console.log(models);

@@ -4,20 +4,22 @@
     "password": "icd17Design!",
     "database": "icd_design_db",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "migrationStorage":"json",
+    "migrationStoragePath":"sequelizeMeta.json"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "username": "iancdesi_dbsvc",
+    "password": "-ZHqEQ-I*Cy;",
+    "database": "iancdesi_icdtestportfolio",
+    "host": "dallas130.arvixeshared.com",
     "dialect": "mysql"
   },
   "production": {
     "username": "iancdesi_dbsvc",
     "password": "-ZHqEQ-I*Cy;",
     "database": "iancdesi_portfoliodb",
-    "host": "127.0.0.1",
+    "host": "dallas130.arvixeshared.com",
     "dialect": "mysql"
   }
 }
