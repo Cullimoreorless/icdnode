@@ -1,6 +1,6 @@
 'use strict';
 
-var environment = 'test';
+var environment = 'dev';
 var config = require('../configuration').environments[environment];
 
 var models = require('../models');
