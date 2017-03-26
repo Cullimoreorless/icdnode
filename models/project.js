@@ -6,7 +6,8 @@ module.exports = function(sequelize, DataTypes) {
     url: DataTypes.STRING,
     description: DataTypes.STRING(1000),
     teaser: DataTypes.STRING,
-    featured: DataTypes.BOOLEAN
+    featured: DataTypes.BOOLEAN,
+    showphototext: DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate: function(models) {

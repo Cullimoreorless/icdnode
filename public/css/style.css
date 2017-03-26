@@ -220,6 +220,7 @@ ul.nav-menu li a{
 }
 .pagePhoto{
   max-height:1200px;
+  max-width:110%;
 }
 .nav-hover-left, .nav-hover-right{
   position:absolute;

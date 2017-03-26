@@ -7,7 +7,8 @@ module.exports = function(sequelize, DataTypes) {
     title: DataTypes.STRING,
     description: DataTypes.STRING(1000),
     type: DataTypes.ENUM('Banner','Tile','Page'),
-    order: DataTypes.INTEGER
+    order: DataTypes.INTEGER,
+    displaycaption: DataTypes.BOOLEAN
   }, {
     classMethods: {
       associate: function(models) {
