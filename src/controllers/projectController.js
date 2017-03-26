@@ -7,7 +7,7 @@ var projectController = function(projectService){
           var tilePhotos = [];
           var pagePhotos = [];
           var bannerPhoto = null;
-          project.photos.map(function(photo){
+          project.Photos.map(function(photo){
             if(photo.type === 'Tile'){
               tilePhotos.push(photo);
             }

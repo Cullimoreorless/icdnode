@@ -2,6 +2,7 @@
 module.exports = {
   up: function(queryInterface, Sequelize) {
     return queryInterface.createTable('Projects', {
+      
       projectid: {
         allowNull: false,
         autoIncrement: true,
@@ -15,7 +16,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(1000)
       },
       teaser: {
         type: Sequelize.STRING

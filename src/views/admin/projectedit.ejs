@@ -90,8 +90,8 @@
             <div class="row" id="projectPhotos">
               <div class="col-sm-8" style="min-height:1300px;">
                 <div id="bannerPhotoContainer">
-                  <% if(project.photos && project.photos.length){  
-                    var bannerPhotos = project.photos.filter(function(pic){
+                  <% if(project.Photos && project.Photos.length){  
+                    var bannerPhotos = project.Photos.filter(function(pic){
                       return pic.type == 'Banner';
                     });
                     if(bannerPhotos.length){
@@ -109,9 +109,9 @@
                     </tr>
                   </thead>
                   <tbody id="photoTablePage">
-                    <% if(project.photos && project.photos.length){ %>
-                      <% for(var i = 0; i < project.photos.length; i++){ %> 
-                        <% var photo = project.photos[i]; %>
+                    <% if(project.Photos && project.Photos.length){ %>
+                      <% for(var i = 0; i < project.Photos.length; i++){ %> 
+                        <% var photo = project.Photos[i]; %>
                         <% if(photo.type == 'Page'){ %> 
                           <% var alternator = i + 1; %>
                           <% include ./phototablerow %>
@@ -129,9 +129,9 @@
                     </tr>
                   </thead>
                   <tbody id="photoTable">
-                    <% if(project.photos && project.photos.length){ %>
-                      <% for(var i = 0; i < project.photos.length; i++){ %> 
-                        <% var photo = project.photos[i]; %>
+                    <% if(project.Photos && project.Photos.length){ %>
+                      <% for(var i = 0; i < project.Photos.length; i++){ %> 
+                        <% var photo = project.Photos[i]; %>
                         <% if(photo.type == 'Tile'){ %> 
                           <% var alternator = i + 1; %>
                           <% include ./phototablerow %>

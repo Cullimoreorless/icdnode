@@ -14,7 +14,7 @@ var photoService = function(models){
     }
     else{
       models.Photo.create(photoToSave).then(function(savedPhoto){
-        models.Project.findById(parseInt(photoToSave.projectid)).then(function(project){
+        models.Project.findById(parseInt(photoToSave.projectprojectid)).then(function(project){
           project.addPhoto(savedPhoto).then(function(response){
             callback(null, savedPhoto);
           }).error(function(error){

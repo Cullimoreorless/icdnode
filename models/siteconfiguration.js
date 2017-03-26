@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var SiteConfiguration = sequelize.define('SiteConfiguration', {
-    siteconfigurationid: {type:DataTypes.INTEGER, autoIncrement:true, primaryKey:true},
+    siteconfigurationid:  {type:DataTypes.INTEGER, allowNull:false, autoIncrement:true,primaryKey:true},
     logourl: DataTypes.STRING,
     logoalttext: DataTypes.STRING,
     introtext: DataTypes.STRING(1000),

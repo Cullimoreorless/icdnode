@@ -61,7 +61,7 @@ app.use(session({
   saveUninitialized:true
 }));
 
-var models = require('./src/models/models')(db);
+var models = require('./models/index');
 
 var userService = require('./src/services/userService')(models);
 require('./src/authentication/passport')(app, userService);

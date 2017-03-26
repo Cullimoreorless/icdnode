@@ -1,10 +1,10 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Project = sequelize.define('Project', {
-    projectid: {type:DataTypes.INTEGER, autoIncrement:true, primaryKey:true},
+    projectid:  {type:DataTypes.INTEGER, allowNull:false, autoIncrement:true,primaryKey:true},
     name: DataTypes.STRING,
     url: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.STRING(1000),
     teaser: DataTypes.STRING,
     featured: DataTypes.BOOLEAN
   }, {

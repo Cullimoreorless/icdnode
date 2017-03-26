@@ -1,7 +1,9 @@
 'use strict';
+var models = require('../models/index');
 module.exports = {
   up: function(queryInterface, Sequelize) {
     return queryInterface.createTable('SiteConfigurations', {
+      
       siteconfigurationid: {
         allowNull: false,
         autoIncrement: true,

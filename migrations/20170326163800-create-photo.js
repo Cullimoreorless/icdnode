@@ -2,6 +2,7 @@
 module.exports = {
   up: function(queryInterface, Sequelize) {
     return queryInterface.createTable('Photos', {
+     
       photoid: {
         allowNull: false,
         autoIncrement: true,
@@ -12,10 +13,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       caption: {
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING
       },
       title: {
-        type: Sequelize.STRING(60)
+        type: Sequelize.STRING
       },
       description: {
         type: Sequelize.STRING(1000)
@@ -33,6 +34,14 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      projectprojectid:{
+        type:Sequelize.INTEGER,
+        allowNull:false,
+        foreignKey:{
+          references: 'Projects',
+          referenceKey:'id'
+        }
       }
     });
   },

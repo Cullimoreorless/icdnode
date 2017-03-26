@@ -54,6 +54,7 @@ var projectService = function(models){
           where: {type: 'Tile'}
         }]
       }).then(function(projects){
+        console.log(projects);
         callback(null, projects);
       }).error(function(err){
         callback(err, false);

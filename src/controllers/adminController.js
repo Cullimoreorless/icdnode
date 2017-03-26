@@ -91,7 +91,7 @@ var adminController = function(siteConfigService, projectService, photoService){
       caption: req.body.caption,
       title: req.body.title,
       description: req.body.description,
-      projectid: parseInt(req.body.projectid),
+      projectprojectid: parseInt(req.body.projectid),
       type: req.body.type
     };
     if(req.body.filename){
