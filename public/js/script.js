@@ -54,10 +54,18 @@ $(function(){
     });
   });
   findStickyTops();
-  $(window).scroll(stickObjsToTop);
+  findScrollTops();
+  $('.scroll-show').hide();
+  $(window).scroll(function(){
+    checkScrollVisibility();
+    stickObjsToTop();
+  });
+  checkScrollVisibility();
+
   elementsToHideOnLoad.forEach(function(element){
     element.hide();
   });
+
   getNumberOfSlides();
   if(slideShowContainerIds.length){
     slideShowContainerIds.forEach(function(tileId){
@@ -112,15 +120,53 @@ var findStickyTops = function(){
     });
   });
 };
-
+var scrollTopsSorted = [];
+var findScrollTops = function(){
+  var scrollTops = [];
+  $('.scroll-show').each(function(index, iterEl){
+    var elem = $(this);
+    var currentTop = elem.offset().top;
+    if(scrollTops.indexOf(currentTop) < 0){
+      scrollTops.push(currentTop);
+    }
+    elem.addClass('scroll-visible-'+currentTop);
+    
+  });
+  scrollTopsSorted = scrollTops.sort(function(a, b){
+    if(parseInt(a) < parseInt(b)){
+      return -1;
+    }
+    return 1;
+  });
+}
+var checkScrollVisibility = function(){
+  var windowTop = $(window).scrollTop();
+    var paddingAmount = 150;
+  for(var i = 0; i < scrollTopsSorted.length; i++){
+    var thisTop = scrollTopsSorted[i];
+    var nextTop = i + 1 == scrollTopsSorted.length ? 100000 : scrollTopsSorted[i + 1];
+    var comparisonNum = thisTop - paddingAmount;
+    if(i == 0 && windowTop < scrollTopsSorted[0]){
+      comparisonNum = -1000;
+    }
+    var thisElem = $('.scroll-visible-'+thisTop);
+    if(comparisonNum < windowTop && (nextTop - paddingAmount) > windowTop){
+      $('.scroll-visible-' + thisTop).fadeIn();
+    }
+    else {//if((comparisonNum > windowTop || (nextTop - paddingAmount) < windowTop) && thisElem.is(':visible')){
+      $('.scroll-visible-' + thisTop).fadeOut();
+    }
+  }
+}
 var stickObjsToTop = function(){
   var windowTop = $(window).scrollTop();
   stickyTopPixels.forEach(function(topPixel){
+    stickElem = $('.stick-to-' + topPixel);
     if(windowTop > topPixel){
-      $('.stick-to-' + topPixel).addClass('stick')
+      stickElem.addClass('stick');
     }
     else{
-      $('.stick-to-' + topPixel).removeClass('stick');
+      stickElem.removeClass('stick');
     }
   });
 };
