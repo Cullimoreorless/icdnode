@@ -175,6 +175,9 @@ body{
   display:inline-block;
   text-align: left;
 }
+.projectDescription{
+  padding-left:8px;
+}
 .projectByline{
   font-style: italic;
   margin-top:-7px;  
