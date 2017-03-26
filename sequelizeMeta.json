@@ -2,5 +2,6 @@
   "20170326163422-create-site-configuration.js",
   "20170326163742-create-project.js",
   "20170326163800-create-photo.js",
-  "20170326164228-create-user.js"
+  "20170326164228-create-user.js",
+  "20170326194951-show-text-flags.js"
 ]
