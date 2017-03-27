@@ -18,6 +18,15 @@ var projectController = function(projectService){
               bannerPhoto = photo;
             }
           });
+          pagePhotos = pagePhotos.sort(function(a, b){
+            if(parseInt(a.order) < parseInt(b.order)){
+              return -1;
+            }
+            else if(parseInt(a.order) == parseInt(b.order)){
+              return 0;
+            }
+            return 1;
+          });
           res.render('projects/projectdetail',{
             project:project, 
             tilePhotos: tilePhotos,

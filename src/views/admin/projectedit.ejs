@@ -114,14 +114,22 @@
                     </tr>
                   </thead>
                   <tbody id="photoTablePage">
-                    <% if(project.Photos && project.Photos.length){ %>
-                      <% for(var i = 0; i < project.Photos.length; i++){ %> 
-                        <% var photo = project.Photos[i]; %>
+                    <% if(project.Photos && project.Photos.length){ 
+                      pagePhotos = project.Photos.sort(function(a, b){
+                        if(parseInt(a.order) < parseInt(b.order)){
+                          return -1;
+                        }
+                        else if(parseInt(a.order) == parseInt(b.order)){
+                          return 0;
+                        }
+                        return 1;
+                      })
+                      pagePhotos.forEach(function(photo){ %> 
                         <% if(photo.type == 'Page'){ %> 
                           <% var alternator = i + 1; %>
                           <% include ./phototablerow %>
                         <% } %>
-                      <% } %>
+                      <% }) %>
                     <% } %>
                   </tbody>
                 </table>
@@ -161,6 +169,53 @@
     </footer>
     <script type='text/javascript'>
       
+      function checkOrderingButtons(){
+        var upButtons = $('#photoTablePage').find('.movePhotoUpBtn');
+        upButtons.prop('disabled',false);
+        upButtons.first().prop('disabled',true);
+
+        var downButtons = $('#photoTablePage').find('.movePhotoDownBtn');
+        downButtons.prop('disabled',false);
+        downButtons.last().prop('disabled',true);
+      }
+      $('.movePhotoDownBtn').click(swapPhotos);
+      $('.movePhotoUpBtn').click(swapPhotos);
+      function swapPhotos(){
+        var $this = $(this);
+        var thisTableRow = $this.closest('.photoTableRow');
+        if($this.hasClass('movePhotoDownBtn')){
+          movePhotoDown(thisTableRow);
+        }
+        if($this.hasClass('movePhotoUpBtn')){
+          movePhotoUp(thisTableRow);
+        }
+        savePhotosOrder();
+        checkOrderingButtons();
+      }
+      function movePhotoUp(elem){
+        var previousElem = elem.prev('.photoTableRow');
+        elem.after(previousElem);
+      }
+      function movePhotoDown(elem){
+        var nextElem = elem.next('.photoTableRow');
+        elem.before(nextElem);
+      }
+      function savePhotosOrder(){
+        var photoIds = [];
+        $('#photoTablePage .photoTableRow').each(function(index, elem){
+          var $this = $(this);
+          photoIds.push({
+            id: parseInt($this.attr('id').split('-')[1]),
+            index:index + 1
+          });
+        });
+        $.post('/admin/savephotosorder',{photos:photoIds}, function(response){
+          console.log(response);
+        });
+      }
+      $(function(){
+        checkOrderingButtons();
+      })
 
       var projectInfoDiv = $('#projectInfo'); 
       var projectPhotosDiv = $('#projectPhotos');

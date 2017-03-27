@@ -1,5 +1,5 @@
 
-<tr id="photoid-<%= photo.photoid %>">
+<tr id="photoid-<%= photo.photoid %>" class="photoTableRow">
   <td>
     <div class="row">
       <div class="col-sm-6 col-xs-12">
@@ -14,12 +14,24 @@
       </div>
     </div>
   </td>
-  <td>
-    <button class="btn btn-primary btn-xs" 
-      onclick="selectPhotoToEdit(<%= JSON.stringify(photo) %>)" >
-      Edit
-    </button>
-    <button class="btn btn-danger btn-xs"
-      onclick="deletePhoto(<%= photo.photoid %>)">Delete</button>
+  <td style="min-width:88px;">
+    <% if(photo.type == 'Page'){ %> 
+      <div style="padding:8px;">
+        <button class="btn btn-default btn-xs movePhotoDownBtn">
+          <i class="fa fa-arrow-down" aria-hidden="true"></i>
+        </button>
+        <button class="btn btn-default btn-xs movePhotoUpBtn">
+          <i class="fa fa-arrow-up" aria-hidden="true"></i>
+        </button>
+      </div>
+    <% } %>
+    <div style="padding:8px;">
+      <button class="btn btn-primary btn-xs" 
+        onclick="selectPhotoToEdit(<%= JSON.stringify(photo) %>)" >
+        Edit
+      </button>
+      <button class="btn btn-danger btn-xs"
+        onclick="deletePhoto(<%= photo.photoid %>)">Delete</button>
+    </div>
   </td>
 </tr>

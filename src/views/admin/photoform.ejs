@@ -66,6 +66,10 @@
           }
         }
         cancelEdit();
+
+        $('.movePhotoDownBtn').click(swapPhotos);
+        $('.movePhotoUpBtn').click(swapPhotos);
+        checkOrderingButtons();
       },
       error: function(xhr, data, err){
         console.log('error: ' + err);

@@ -37,6 +37,9 @@ var router = function(adminController, photoUpload, multiUpload){
   adminRouter.post('/savephoto',
     photoUpload.single('photo'),
     adminController.savePhoto);
+  
+  adminRouter.route('/savephotosorder')
+    .post(adminController.savePhotosOrder)
 
   adminRouter.route('/deletePhoto/:photoId')
     .get(adminController.deletePhoto);

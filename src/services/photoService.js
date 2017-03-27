@@ -13,6 +13,7 @@ var photoService = function(models){
         });
     }
     else{
+      photoToSave.order = 5000;
       models.Photo.create(photoToSave).then(function(savedPhoto){
         models.Project.findById(parseInt(photoToSave.projectprojectid)).then(function(project){
           project.addPhoto(savedPhoto).then(function(response){
@@ -37,10 +38,30 @@ var photoService = function(models){
     });
   };
 
+  var savePhotosOrder = function(photoIds, callback){
+    models.sequelize.transaction(function(t){
+      var promises = [];
+      photoIds.forEach(function(photoId){
+        promises.push(
+          models.Photo.update(
+            {order:photoId.index},
+            {where:{photoid:photoId.id}},
+            {transaction:t}
+          )
+        );
+      });
+      return Promise.all(promises);
+    }).then(function(response){
+      callback(null, response);
+    }).error(function(error){
+      callback(error, null);
+    })
+  };
 
   return {
     savePhoto: savePhoto,
-    deletePhoto: deletePhoto
+    deletePhoto: deletePhoto,
+    savePhotosOrder: savePhotosOrder
   };
 };
 

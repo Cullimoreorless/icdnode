@@ -109,6 +109,12 @@ var adminController = function(siteConfigService, projectService, photoService){
     });
   };
 
+  var savePhotosOrder = function(req, res){
+    photoService.savePhotosOrder(req.body.photos, function(error, response){
+      res.send(error || 'Succeeded');
+    });
+  };
+
   return {
     getNewProjectPage: getNewProjectPage,
     editProjectPage: editProjectPage,
@@ -118,7 +124,8 @@ var adminController = function(siteConfigService, projectService, photoService){
     saveProject:saveProject,
     deletePhoto: deletePhoto,
     savePhoto: savePhoto,
-    deleteProject: deleteProject
+    deleteProject: deleteProject,
+    savePhotosOrder: savePhotosOrder
   };
 };
 
