@@ -92,7 +92,8 @@ var adminController = function(siteConfigService, projectService, photoService){
       title: req.body.title,
       description: req.body.description,
       projectprojectid: parseInt(req.body.projectid),
-      type: req.body.type
+      type: req.body.type,
+      displaycaption: req.body.displaycaption ? true : false
     };
     if(req.body.filename){
       photoToSave.url = req.body.filename;

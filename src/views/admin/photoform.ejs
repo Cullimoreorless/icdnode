@@ -25,6 +25,11 @@
       <option value="Banner">Banner</option>
     </select>
   </div>
+  <div class="form-group">
+    <label>
+      <input id='photodisplaycaption' type="checkbox" name="displaycaption" <%= project.displaycaption ? 'checked': '' %> /> Show photo text
+    </label>
+  </div>
   <input type="hidden" id="projectId" name="projectid" value="<%= project.projectid %>" />
   <input type="hidden" id="photoId" name="photoid" value="<%= photo.photoid %>"/>
   <input type="button" id="savePhotoBtn" class="btn btn-primary" value="Save Photo">
@@ -89,6 +94,7 @@
     $('#photoTitle').val(photoToEdit.title);
     $('#photoCaption').val(photoToEdit.caption);
     $('#photoDescription').val(photoToEdit.description);
+    $('#photodisplaycaption').prop('checked', photoToEdit.displaycaption);
   };
   $('#cancelEdit').click(cancelEdit);
 </script>
