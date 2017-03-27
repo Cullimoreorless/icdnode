@@ -221,9 +221,16 @@ ul.nav-menu li a{
   min-width:120px;
   text-align: center;
 }
-.pagePhoto{
-  max-height:1200px;
-  max-width:110%;
+@media (min-width:700px){
+  .pagePhoto{
+    max-height:1200px;
+    max-width:110%;
+  }
+}
+@media (max-width: 700px){
+  .pagePhoto{
+    max-width:100%;
+  }
 }
 .nav-hover-left, .nav-hover-right{
   position:absolute;
