@@ -3,6 +3,14 @@ body{
   color: darkslategrey;
   margin:0;
 }
+#loading-bar{
+  width:100%;
+  color:rgba(250,250,250, 0.9);
+  position:fixed;
+  top:0;
+  text-align:center;
+  background-color: darkslategrey;
+}
 #top-menu{
   width:100%;
   text-align:right;

@@ -1,6 +1,6 @@
 var elementsToHideOnLoad = [];
 $(function(){
-
+  hideLoadingBar();
 
   $('#mobileMenuButton').click(function(){
     $('#mobileDropDown').toggle('show');
@@ -180,4 +180,14 @@ function makeHeightOfParent(childSelector, parentSelector){
     $this.css('height', '0px');
     $this.css('height', $this.parents(parentSelector).css('height'));
   })
+}
+function showLoadingBar(message){
+  if(!message){
+    message = 'Loading...';
+  }
+  $('#loading-bar').text(message);
+  $('#loading-bar').slideDown();
+}
+function hideLoadingBar(){
+  $('#loading-bar').slideUp();
 }

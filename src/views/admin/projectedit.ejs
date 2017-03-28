@@ -209,7 +209,9 @@
             index:index + 1
           });
         });
+        showLoadingBar('Saving photo order...');
         $.post('/admin/savephotosorder',{photos:photoIds}, function(response){
+          hideLoadingBar();
           console.log(response);
         });
       }

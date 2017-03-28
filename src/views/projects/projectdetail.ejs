@@ -90,13 +90,13 @@
         $('.projPhotoDescription').hide();
       }
       $(function(){
-        $('.projPhotoDescription').hide();
         resizeNecessaryDivs();
         centerProjectText();
         $(window).resize(function(){
           resizeNecessaryDivs();
           centerProjectText();
         });
+        //prevents text flash
         $('.projectTextContainer').css('color','darkslategrey');
       });
     </script>

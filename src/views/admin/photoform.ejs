@@ -40,6 +40,7 @@
     event.preventDefault();
 
     var formData = new FormData($(this)[0]);
+    showLoadingBar("Saving photo...");
     $.ajax({
       url:'/admin/savephoto',
       type:'post',
@@ -48,6 +49,7 @@
       processData:false,
       contentType:false,
       success:function(data, success){
+        hideLoadingBar();
         console.log('data: ' + data + ' success: ' + success);
         var dataJson = JSON.parse(data);
         if(dataJson.phototype === 'Tile' || dataJson.phototype === 'Page'){
@@ -77,8 +79,11 @@
         checkOrderingButtons();
       },
       error: function(xhr, data, err){
+
         console.log('error: ' + err);
       }
+    }).progress(function(event){
+      console.log(event);
     });
 
   });
