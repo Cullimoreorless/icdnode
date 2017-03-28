@@ -69,10 +69,33 @@
         makeHeightOfParent('.tilePhotoContainer', '.tilePhotoRow');
         makeHeightOfParent('.tilePhotoSpacer','.tilePhotoRow');
       }
+      function centerProjectText(){
+        var windowHeight = $(window).height();
+        $('.projSideDescription').height(windowHeight);
+        var originalColor = $('.projPhotoDescription').css('color');
+        $('.projPhotoDescription').css({
+          'color': 'transparent !important'
+        });
+        $('.projPhotoDescription').show();
+        $('.projSideDescription').each(function(index, elem){
+          var $this = $(elem);
+          var textContainer = $this.find('.projectTextContainer');
+          var textHeight = textContainer.height();
+          var topMargin = (windowHeight - textHeight)/2 - 15;
+          textContainer.css({'margin-top':topMargin+'px'});
+        });
+        $('.projPhotoDescription').css({
+          'color': originalColor
+        });
+        $('.projPhotoDescription').hide();
+      }
       $(function(){
+        $('.projPhotoDescription').hide();
         resizeNecessaryDivs();
+        centerProjectText();
         $(window).resize(function(){
           resizeNecessaryDivs();
+          centerProjectText();
         });
 
       });

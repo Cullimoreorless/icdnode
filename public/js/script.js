@@ -162,8 +162,10 @@ var stickObjsToTop = function(){
   var windowTop = $(window).scrollTop();
   stickyTopPixels.forEach(function(topPixel){
     stickElem = $('.stick-to-' + topPixel);
+    var originalWidth = stickElem.width();
     if(windowTop > topPixel){
       stickElem.addClass('stick');
+      stickElem.width(originalWidth);
     }
     else{
       stickElem.removeClass('stick');
