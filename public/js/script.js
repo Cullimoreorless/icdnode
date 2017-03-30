@@ -5,27 +5,7 @@ $(function(){
   $('#mobileMenuButton').click(function(){
     $('#mobileDropDown').toggle('show');
   })
-  $('.projectTile').hover(function(){
-    $(this).find('.photoOverlay').css({
-      'background-color': 'rgba(40,40,40,0.4)',
-      'color':'rgba(230,230,230, 0.95)'});
-    $(this).find('.projectOverlayText').css({
-      "margin-top":"0px"
-    });
-    $(this).find('.photoCaptionContainer').css({
-      "height":"60px"
-    })
-  }, function(){
-    $(this).find('.photoOverlay').css({
-      'background-color': 'rgba(40,40,40,0.1)',
-      'color':'rgba(250,250,250, 0.9)'});
-    $(this).find('.projectOverlayText').css({
-      "margin-top":'-75px'
-    });
-    $(this).find('.photoCaptionContainer').css({
-      "height":"0px"
-    });
-  });
+  addProjectTileHover();
   $('.nav-hover-container').hover(function () {
       $(this).children('.nav-hover-right').css({
         "width": "17px",
@@ -190,4 +170,27 @@ function showLoadingBar(message){
 }
 function hideLoadingBar(){
   $('#loading-bar').slideUp();
+}
+function addProjectTileHover(){
+  $('.projectTile').hover(function(){
+    $(this).find('.photoOverlay').css({
+      'background-color': 'rgba(40,40,40,0.4)',
+      'color':'rgba(230,230,230, 0.95)'});
+    $(this).find('.projectOverlayText').css({
+      "margin-top":"0px"
+    });
+    $(this).find('.photoCaptionContainer').css({
+      "height":"60px"
+    })
+  }, function(){
+    $(this).find('.photoOverlay').css({
+      'background-color': 'rgba(40,40,40,0.1)',
+      'color':'rgba(250,250,250, 0.9)'});
+    $(this).find('.projectOverlayText').css({
+      "margin-top":'-75px'
+    });
+    $(this).find('.photoCaptionContainer').css({
+      "height":"0px"
+    });
+  });
 }

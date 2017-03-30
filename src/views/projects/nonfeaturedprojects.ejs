@@ -1,0 +1,6 @@
+<% if(projects && projects.length){ %> 
+    <% for(var i = 0; i < projects.length; i++){ %> 
+      <% var project = projects[i]; %>
+      <% include ./projecttile %>
+    <%}%>
+  <%}%>

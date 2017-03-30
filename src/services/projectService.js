@@ -47,7 +47,23 @@ var projectService = function(models){
   var getFeaturedProjects = function(callback){
     models.Project.findAll(
       { where:{featured:true}, 
-        limit:6,
+        order: [['createdAt','DESC']],
+        include: [{
+          model: models.Photo,
+          order: 'order',
+          where: {type: 'Tile'}
+        }]
+      }).then(function(projects){
+        console.log(projects);
+        callback(null, projects);
+      }).error(function(err){
+        callback(err, false);
+      });
+  };
+
+  var getNonFeaturedProjects = function(callback){
+    models.Project.findAll(
+      { where:{featured:false}, 
         order: [['createdAt','DESC']],
         include: [{
           model: models.Photo,
@@ -89,6 +105,7 @@ var projectService = function(models){
     getProjectToEdit: getProjectToEdit,
     saveProject: saveProject,
     getFeaturedProjects: getFeaturedProjects,
+    getNonFeaturedProjects: getNonFeaturedProjects,
     getProjectDetails: getProjectDetails,
     deleteProject: deleteProject
   };

@@ -200,6 +200,9 @@ body{
 header{
   background: transparent;
 }
+.softPadding{
+  padding:8px 80px 8px 80px;
+}
 
 /*Menu Styling*/
 a:hover{

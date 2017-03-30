@@ -128,6 +128,9 @@ app.route('/signIn')
       res.redirect('/admin/portal');
     });
 
+app.get('/proj/nonfeatured', 
+  projectController.getNonFeaturedProjects);
+
 app.route('/contact')
   .get(function(req, res){
     res.render('contact');

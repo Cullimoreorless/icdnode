@@ -1,3 +1,4 @@
+var ejs = require('ejs');
 
 var projectController = function(projectService){
   var getProjectPage = function(req, res){
@@ -38,8 +39,22 @@ var projectController = function(projectService){
     );
   };
 
+  var getNonFeaturedProjects = function(req, res){
+    projectService.getNonFeaturedProjects(
+      function(err, projects){
+        ejs.renderFile(__dirname + '/../views/projects/nonfeaturedprojects.ejs',
+          {projects:projects},
+          function(error, responseString){
+            if(responseString){
+              res.send({htmlString:responseString});
+            }
+          });
+      });
+  };
+
   return {
-    getProjectPage: getProjectPage
+    getProjectPage: getProjectPage,
+    getNonFeaturedProjects: getNonFeaturedProjects
   };
 };
 
