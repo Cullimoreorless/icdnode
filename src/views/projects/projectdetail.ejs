@@ -25,7 +25,8 @@
       <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
-  <body>
+  <body style="height:100%;width:100%;">
+    <div style="width:100%;">
     <header role="banner">
       <% include ../common/header %>
     </header>
@@ -44,8 +45,8 @@
           </div>
         </div>
       <% } %>
-    <div class="row">
-      <div class="col-sm-12" style="padding:8px 20px;">
+    <div >
+      <div class="col-sm-12 softPadding">
           <div class="projectTeaserArea">        
             <div class="projectName">
               <%= project.name %>
@@ -59,7 +60,7 @@
         </div>
       </div>
     </div>
-    <div class="sticky-anchor">
+    <div class="sticky-anchor" style="padding-left:80px;">
       <% pagePhotos.forEach(function(photo){ %>
         <% include photopage %>
       <% }) %>
@@ -103,5 +104,6 @@
     <footer>
       <% include ../common/footer %>
     </footer>
+    </div>
   </body>
 </html>
