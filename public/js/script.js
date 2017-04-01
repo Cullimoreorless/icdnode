@@ -41,6 +41,7 @@ $(function(){
     stickObjsToTop();
   });
   checkScrollVisibility();
+  stickObjsToTop();
 
   elementsToHideOnLoad.forEach(function(element){
     element.hide();
