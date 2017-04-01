@@ -121,7 +121,7 @@ var findScrollTops = function(){
 }
 var checkScrollVisibility = function(){
   var windowTop = $(window).scrollTop();
-    var paddingAmount = 150;
+  var paddingAmount = 150;
   for(var i = 0; i < scrollTopsSorted.length; i++){
     var thisTop = scrollTopsSorted[i];
     var nextTop = i + 1 == scrollTopsSorted.length ? 100000 : scrollTopsSorted[i + 1];
