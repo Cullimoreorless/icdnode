@@ -101,6 +101,7 @@ var findStickyTops = function(){
     });
   });
 };
+
 var scrollTopsSorted = [];
 var findScrollTops = function(){
   var scrollTops = [];
@@ -122,20 +123,22 @@ var findScrollTops = function(){
 }
 var checkScrollVisibility = function(){
   var windowTop = $(window).scrollTop();
-  var paddingAmount = 150;
+  var windowHeight = $(window).height();
+  var windowMiddle = windowTop + (windowHeight/2);
+  var paddingAmount = 100;
   for(var i = 0; i < scrollTopsSorted.length; i++){
     var thisTop = scrollTopsSorted[i];
     var nextTop = i + 1 == scrollTopsSorted.length ? 100000 : scrollTopsSorted[i + 1];
-    var comparisonNum = thisTop - paddingAmount;
+    var comparisonNum = thisTop + paddingAmount;
     if(i == 0 && windowTop < scrollTopsSorted[0]){
       comparisonNum = -1000;
     }
     var thisElem = $('.scroll-visible-'+thisTop);
-    if(comparisonNum < windowTop && (nextTop - paddingAmount) > windowTop){
-      $('.scroll-visible-' + thisTop).fadeIn();
+    if(comparisonNum < windowMiddle && (nextTop - paddingAmount) > windowMiddle){
+      $('.scroll-visible-' + thisTop).fadeIn(200);
     }
     else {//if((comparisonNum > windowTop || (nextTop - paddingAmount) < windowTop) && thisElem.is(':visible')){
-      $('.scroll-visible-' + thisTop).fadeOut();
+      $('.scroll-visible-' + thisTop).fadeOut(200);
     }
   }
 }
