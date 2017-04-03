@@ -64,8 +64,9 @@ var projectService = require('./src/services/projectService')(models);
 var photoService = require('./src/services/photoService')(models);
 
 var menuitems = [
-  {url:'/contact', text:'contact'},
-  {url:'/resume', text:'resume'}
+  {url:'/about-me', text:'about me'},
+  {url:'/experience', text:'experience'},
+  {url:'/', text:'work'}
 ];
 
 app.use(function(req, res, next){
@@ -73,10 +74,7 @@ app.use(function(req, res, next){
     console.log(response);
     if(response){
       var isUserLoggedIn = (req.user ? true : false);
-      var menuitems = [
-        {url:'/contact', text:'contact'},
-        {url:'/resume', text:'resume'}
-      ];
+      
       var socialMediaSites = [
         {iconname:'linkedin', url: response.linkedinurl },
         {iconname:'instagram', url: response.instagramurl },
@@ -131,12 +129,12 @@ app.route('/signIn')
 app.get('/proj/nonfeatured', 
   projectController.getNonFeaturedProjects);
 
-app.route('/contact')
+app.route('/about-me')
   .get(function(req, res){
     res.render('contact');
   });
 
-app.get('/resume', function(req, res){
+app.get('/experience', function(req, res){
   res.render('resume');
 });
 
