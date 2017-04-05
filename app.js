@@ -63,18 +63,18 @@ var siteConfigService = require('./src/services/siteConfigService')(models);
 var projectService = require('./src/services/projectService')(models);
 var photoService = require('./src/services/photoService')(models);
 
-var menuitems = [
-  {url:'/about-me', text:'about me'},
-  {url:'/experience', text:'experience'},
-  {url:'/', text:'work'}
-];
+
 
 app.use(function(req, res, next){
   siteConfigService.getSiteConfig(function(error, response){
     console.log(response);
     if(response){
       var isUserLoggedIn = (req.user ? true : false);
-      
+      var menuitems = [
+        {url:'/about-me', text:'about me'},
+        {url:'/experience', text:'experience'},
+        {url:'/', text:'work'}
+      ];
       var socialMediaSites = [
         {iconname:'linkedin', url: response.linkedinurl },
         {iconname:'instagram', url: response.instagramurl },
