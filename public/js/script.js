@@ -40,6 +40,10 @@ $(function(){
     checkScrollVisibility();
     stickObjsToTop();
   });
+  makeTilesSquare();
+  $(window).resize(function(){
+    makeTilesSquare();
+  });
   var pagePhotos = $('img.pagePhoto');
   if(pagePhotos.length){
     var photoInterval = setInterval(function(){
@@ -178,6 +182,13 @@ var stickObjsToTop = function(){
   });
 };
 
+function makeTilesSquare(){
+  var currentWidth = $('.projectTile').width();
+  $('.projectTileContainer, .bgPhotos, .photoCaptions, .photoOverlay').css({
+    'height':currentWidth+'px',
+    'max-height':currentWidth+'px'
+  });
+}
 
 function makeHeightOfParent(childSelector, parentSelector){
   $(childSelector).each(function(index, elem){
