@@ -264,6 +264,7 @@ ul.nav-menu li a{
   margin:0 auto;
   overflow-x:hidden;
   max-width:100%;
+  padding-bottom: 20px;
 }
 
 .nav-hover-left, .nav-hover-right{
