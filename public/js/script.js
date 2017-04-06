@@ -132,7 +132,7 @@ function findScrollTops(){
     nextElem.attr('class', function(i, c){
       return c.replace(/(^|\s)scroll-visible-\S+/g,'');
     })
-    var currentTop = elem.offset().top;
+    var currentTop = Math.floor(elem.offset().top);
     if(scrollTops.indexOf(currentTop) < 0){
       scrollTops.push(currentTop);
     }
