@@ -34,8 +34,8 @@ $(function(){
     });
   });
   findStickyTops();
-  //findScrollTops();
-  //$('.scroll-show').hide();
+  // findScrollTops();
+  // $('.scroll-show').hide();
   $(window).scroll(function(){
     checkScrollVisibility();
     stickObjsToTop();
@@ -59,7 +59,7 @@ $(function(){
         $('.scroll-show').hide();
         clearInterval(photoInterval);
       }
-    }, 500);
+    }, 1000);
   }
   checkScrollVisibility();
   stickObjsToTop();
@@ -137,7 +137,7 @@ function findScrollTops(){
       scrollTops.push(currentTop);
     }
     nextElem.addClass('scroll-visible-'+currentTop);
-    
+
   });
   scrollTopsSorted = scrollTops.sort(function(a, b){
     if(parseInt(a) < parseInt(b)){
