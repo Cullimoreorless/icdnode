@@ -89,11 +89,11 @@
   });
   $('#savePhotoBtn').click(function(){
     $('#photoform').submit();
-  })
-  var cancelEdit = function(){
+  });
+  function cancelEdit(){
     selectPhotoToEdit({ photoid:'0', url: '', title: '', caption:'', description: '' });
   };
-  var selectPhotoToEdit = function(photoToEdit){
+  function selectPhotoToEdit(photoToEdit){
     $('#photoId').val(photoToEdit.photoid);
     $('#photoType').val(photoToEdit.type);
     $('#photoTitle').val(photoToEdit.title);

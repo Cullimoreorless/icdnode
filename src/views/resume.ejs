@@ -33,7 +33,11 @@
       <div class="row">
         <div class="col-sm-12">
           <% if(conf.resumeurl){ %>
+            
             <iframe id="resumeIFrame" src="" style="width:718px; height:700px;margin-left:auto;margin-right:auto;" frameborder="0"></iframe>
+            <div id="resumeButtonContainer">
+              <a href="/photos/<%=conf.resumeurl%>" download class="btn btn-primary btn-block">Download Resume</a>
+            </div>
             <script type="text/javascript">
               var url = 'http://docs.google.com/gview?url=http://'+ document.domain +'/photos/<%=conf.resumeurl%>&embedded=true';
               $('#resumeIFrame').attr('src', url);

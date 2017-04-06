@@ -78,8 +78,8 @@ $(function(){
 
 var numOfSlides = {};
 var slideShowContainerIds = [];
-var projIntervals = {}
-var startSlideshows = function(){
+var projIntervals = {};
+function startSlideshows(){
   slideShowContainerIds.forEach(function(tileId){
     if(numOfSlides[tileId] > 1){
       projIntervals[tileId] = setInterval(function(){
@@ -88,11 +88,11 @@ var startSlideshows = function(){
     }
   });
 };
-var nextSlide = function(containerId){
+function nextSlide(containerId){
   $('#'+containerId + ' :first-child').fadeOut(400).delay(800)
     .next('.slide').delay(400).fadeIn().end().appendTo('#'+containerId);
 };
-var getNumberOfSlides = function(slideClass){
+function getNumberOfSlides(slideClass){
   $('.slide-show').each(function(index, elem){
     var thisId = $(this).attr('id');
     numOfSlides[thisId] = $(this).children('.slide').length;
@@ -101,14 +101,14 @@ var getNumberOfSlides = function(slideClass){
 };
 
 
-var checkOrAddClass = function(elem, className){
+function checkOrAddClass(elem, className){
   if(!elem.hasClass(className)){
     elem.addClass(className);
   }
 };
 
 var stickyTopPixels = [];
-var findStickyTops = function(){
+function findStickyTops(){
   stickyTopPixels = [];
   $('.sticky-anchor').each(function(index, iterEl){
     var elem = $(this);
@@ -124,7 +124,7 @@ var findStickyTops = function(){
 };
 
 var scrollTopsSorted = [];
-var findScrollTops = function(){
+function findScrollTops(){
   var scrollTops = [];
   $('.scroll-anchor').each(function(index, iterEl){
     var elem = $(this);
@@ -146,7 +146,7 @@ var findScrollTops = function(){
     return 1;
   });
 }
-var checkScrollVisibility = function(){
+function checkScrollVisibility(){
   var windowTop = $(window).scrollTop();
   var windowHeight = $(window).height();
   var windowMiddle = windowTop + (windowHeight/2);
@@ -162,12 +162,12 @@ var checkScrollVisibility = function(){
     if(comparisonNum < windowMiddle && (nextTop - paddingAmount) > windowMiddle){
       $('.scroll-visible-' + thisTop).fadeIn(200);
     }
-    else {//if((comparisonNum > windowTop || (nextTop - paddingAmount) < windowTop) && thisElem.is(':visible')){
+    else {
       $('.scroll-visible-' + thisTop).fadeOut(200);
     }
   }
 }
-var stickObjsToTop = function(){
+function stickObjsToTop(){
   var windowTop = $(window).scrollTop();
   stickyTopPixels.forEach(function(topPixel){
     stickElem = $('.stick-to-' + topPixel);

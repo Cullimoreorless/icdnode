@@ -225,13 +225,13 @@
       var projectPhotosBtn = $('#projectPhotosBtn');
       elementsToHideOnLoad.push(projectPhotosDiv);
 
-      var showProjectInfo = function(){
+      function showProjectInfo(){
         projectInfoDiv.show();
         projectPhotosDiv.hide();
         checkOrAddClass(projectInfoBtn, 'btn-primary');
         projectPhotosBtn.removeClass('btn-primary');
       };
-      var showProjectPhotos = function(){
+      function showProjectPhotos(){
         projectInfoDiv.hide();
         projectPhotosDiv.show();
         checkOrAddClass(projectPhotosBtn, 'btn-primary');
