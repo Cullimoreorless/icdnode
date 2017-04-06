@@ -112,7 +112,7 @@ function findStickyTops(){
   stickyTopPixels = [];
   $('.sticky-anchor').each(function(index, iterEl){
     var elem = $(this);
-    var currentTop = elem.offset().top;
+    var currentTop = Math.floor(elem.offset().top);
     if(stickyTopPixels.indexOf(currentTop) < 0){
       stickyTopPixels.push(currentTop);
     }
