@@ -197,6 +197,7 @@ body{
 }
 .projectTile{
   cursor: pointer;
+  padding-bottom:20px;
 }
 .projectDescription{
   text-align: left;
