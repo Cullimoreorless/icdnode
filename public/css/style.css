@@ -265,7 +265,7 @@ ul.nav-menu li a{
   color:black;
 }
 .nav-link{
-  width:120px;
+  /*width:120px;*/
   height:59px;
   display:table-cell;
   text-align:center;
@@ -275,7 +275,9 @@ ul.nav-menu li a{
 }
 .nav-hover-container{
   position:relative;
-  min-width:120px;
+  /*min-width:120px;*/
+  margin-right:16px;
+  margin-left:16px;
   text-align: center;
 }
 .pagePhoto{
@@ -304,7 +306,7 @@ ul.nav-menu li a{
 }
 
 .nav-hover-right{
-  right:50px;
+  left:100%;
   border-width: 5px 0px 5px 5px; 
 }
 .footerContent{

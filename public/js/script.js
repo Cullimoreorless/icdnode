@@ -9,21 +9,21 @@ $(function(){
   $('.nav-hover-container').hover(function () {
       $(this).children('.nav-hover-right').css({
         "width": "17px",
-        "right": "64px",
-        "left": "auto",
+        "right": "auto",
+        "left": "32px",
         "opacity": "0.3"
       });
       $(this).children('.nav-hover-left').css({
         "width": "17px",
-        "left": "18px",
+        "left": "11px",
         "right": "auto",
         "opacity": "0.3"
       });
     }, function () {
       $(this).children('.nav-hover-right').css({
         "width": "0px",
-        "right": "50px",
-        "left":"auto",
+        "right": "0px",
+        "left":"100%",
         "opacity": "0"
       });
       $(this).children('.nav-hover-left').css({
