@@ -39,6 +39,7 @@ $(function(){
   $(window).scroll(function(){
     checkScrollVisibility();
     stickObjsToTop();
+    checkScrollButtonVisibility();
   });
   makeTilesSquare();
   $(window).resize(function(){
@@ -67,6 +68,12 @@ $(function(){
     element.hide();
   });
 
+
+  var scrollTopBtn = $('#scrollToTop');
+  scrollTopBtn.click(function(){
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false;
+  });
   getNumberOfSlides();
   if(slideShowContainerIds.length){
     slideShowContainerIds.forEach(function(tileId){
@@ -99,7 +106,16 @@ function getNumberOfSlides(slideClass){
     slideShowContainerIds.push(thisId);
   });
 };
-
+function checkScrollButtonVisibility(){
+  var windowTop = $(window).scrollTop();
+  var scrollTopBtn = $('#scrollToTop');
+  if(windowTop > 100){
+    scrollTopBtn.slideDown();
+  }
+  else{
+    scrollTopBtn.slideUp();        
+  }
+}
 
 function checkOrAddClass(elem, className){
   if(!elem.hasClass(className)){
