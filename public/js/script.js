@@ -107,9 +107,10 @@ function getNumberOfSlides(slideClass){
   });
 };
 function checkScrollButtonVisibility(){
-  var windowTop = $(window).scrollTop();
+  var scrollBottom = $(window).scrollTop() + $(window).height();
+  var bodyBottom = $('body').height();
   var scrollTopBtn = $('#scrollToTop');
-  if(windowTop > 100){
+  if(bodyBottom - scrollBottom  < 170){
     scrollTopBtn.slideDown();
   }
   else{
@@ -245,4 +246,9 @@ function addProjectTileHover(){
       "height":"0px"
     });
   });
+}
+
+window.onbeforeunload = function(e){
+  $('html, body').fadeOut(300);
+  setTimeout(function(){console.log("fading...")}, 300)
 }
