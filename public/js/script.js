@@ -47,6 +47,7 @@ $(function(){
     makeTilesSquare();
   });
   var pagePhotos = $('img.pagePhoto');
+  findScrollTops();
   
   
   if(pagePhotos.length){
@@ -63,7 +64,7 @@ $(function(){
         $('.scroll-show').hide();
         clearInterval(photoInterval);
       }
-    }, 2000);
+    }, 1000);
   }
 
 
@@ -255,5 +256,5 @@ function addProjectTileHover(){
 
 window.onbeforeunload = function(e){
   $('html, body').fadeOut(300);
-  setTimeout(function(){console.log("fading...")}, 300)
+  //setTimeout(function(){console.log("fading...")}, 300)
 }
