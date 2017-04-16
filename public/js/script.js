@@ -48,23 +48,23 @@ $(function(){
   });
   var pagePhotos = $('img.pagePhoto');
   
-  findScrollTops();
-  // if(pagePhotos.length){
-  //   var photoInterval = setInterval(function(){
-  //     var cancelInterval = true;
-  //     pagePhotos.each(function(index, elem){
-  //       if(!elem.naturalHeight){
-  //         cancelInterval = false;
-  //         return false;
-  //       }
-  //     });
-  //     if(cancelInterval){
-  //       findScrollTops();
-  //       $('.scroll-show').hide();
-  //       clearInterval(photoInterval);
-  //     }
-  //   }, 2000);
-  // }
+  
+  if(pagePhotos.length){
+    var photoInterval = setInterval(function(){
+      var cancelInterval = true;
+      pagePhotos.each(function(index, elem){
+        if(!elem.naturalHeight){
+          cancelInterval = false;
+          return false;
+        }
+      });
+      if(cancelInterval){
+        findScrollTops();
+        $('.scroll-show').hide();
+        clearInterval(photoInterval);
+      }
+    }, 2000);
+  }
 
 
   checkScrollVisibility();
@@ -88,10 +88,6 @@ $(function(){
   }
 });
 
-$(window).load(function(){
-  findScrollTops();
-  $('.scroll-show').hide();
-});
 var numOfSlides = {};
 var slideShowContainerIds = [];
 var projIntervals = {};
