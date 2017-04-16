@@ -1,5 +1,6 @@
 var elementsToHideOnLoad = [];
 $(function(){
+  $('html, body').fadeIn(300);
   hideLoadingBar();
 
   $('#mobileMenuButton').click(function(){
@@ -60,7 +61,7 @@ $(function(){
         $('.scroll-show').hide();
         clearInterval(photoInterval);
       }
-    }, 1000);
+    }, 2000);
   }
   checkScrollVisibility();
   stickObjsToTop();
