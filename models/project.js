@@ -7,7 +7,9 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.STRING(1000),
     teaser: DataTypes.STRING,
     featured: DataTypes.BOOLEAN,
-    showphototext: DataTypes.BOOLEAN
+    showphototext: DataTypes.BOOLEAN,
+    showprocess: DataTypes.BOOLEAN,
+    processdocumenturl: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {

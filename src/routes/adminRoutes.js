@@ -32,7 +32,7 @@ var router = function(adminController, photoUpload, multiUpload){
     .get(adminController.editProjectPage);
 
   adminRouter.route('/saveproject')
-    .post(adminController.saveProject);
+    .post(photoUpload.single('processdoc'), adminController.saveProject);
 
   adminRouter.post('/savephoto',
     photoUpload.single('photo'),

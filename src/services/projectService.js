@@ -23,7 +23,14 @@ var projectService = function(models){
   };
 
   var saveProject = function(project, callback){
+    console.log(project);
     var encodedProjectName = encodeProjectName(project.name);
+    if(project.filename){
+      project.processdocumenturl = project.filename;
+    }
+    
+    project.showprocess = project.showprocess ? true : false;
+    
     project.featured = project.featured ? true : false;
     project.showphototext = project.showphototext ? true : false;
     project.url = encodedProjectName;
